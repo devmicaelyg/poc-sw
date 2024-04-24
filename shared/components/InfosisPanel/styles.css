@@ -1,0 +1,40 @@
+.p-panel-header {
+  background-color: #2897ca;
+  color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.p-panel.fullscreen .p-panel-header {
+  border-radius: unset;
+}
+
+.p-panel-header-icon {
+  color: white;
+}
+
+.p-panel-header .p-button {
+  background-color: transparent;
+  color: white;
+  font-size: 1.5rem;
+  padding: 0.25rem;
+  border: none;
+}
+
+.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+}
+.p-panel-content {
+  border: none
+}
+
+.p-panel.fullscreen .p-panel-content {
+  height: 100vh;
+}

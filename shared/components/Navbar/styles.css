@@ -1,0 +1,26 @@
+.p-menubar-root-list {
+    gap: 10px;
+    color: white;
+}
+
+.p-dropdown-label{
+    color: white;
+}
+
+.p-dropdown-trigger-icon{
+    color: white;
+}
+
+/* .p-menuitem-text{
+    color: white;
+}
+
+.p-submenu-icon{
+    color: white;
+}
+
+.p-menuitem-link {
+    background-color: #49aedb;
+    border-radius: 10px;
+    color: white;
+} */
