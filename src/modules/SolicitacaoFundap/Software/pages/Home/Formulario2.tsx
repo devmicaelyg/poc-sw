@@ -78,36 +78,42 @@ export default function CellEditingDemo() {
     str = str.trim();
 
     if (!str) {
-      return false;
+        return false;
     }
 
-    str = str.replace(/^0+/, "") || "0";
+    str = str.replace(/^0+/, '') || '0';
     let n = Math.floor(Number(str));
 
     return n !== Infinity && String(n) === str && n >= 0;
-  };
+};
 
   const onCellEditComplete = (e: ColumnEvent) => {
     let { rowData, newValue, field, originalEvent: event } = e;
 
     switch (field) {
+      case "valor1":
       case "valor2":
-      case "total":
-        // if (isPositiveInteger(newValue)) rowData[field] = newValue;
-        // else event.preventDefault();
-        break;
+      case "valor3":
+        if (isPositiveInteger(newValue)) rowData[field] = newValue;
+        else event.preventDefault();
+                break;
 
       default:
-        // if (newValue.trim().length > 0) rowData[field] = newValue;
-        // else event.preventDefault();
+        if (newValue.trim().length > 0) rowData[field] = newValue;
+        else event.preventDefault();
         break;
     }
   };
 
   const cellEditor = (options: ColumnEditorOptions) => {
-    if (options.field === "total") return null;
-    if (options.field === "code") return null;
-    else return textEditor(options);
+    switch (options.field) {
+      case "valor1":
+      case "valor2":
+      case "valor3":
+        return priceEditor(options);
+    }
+
+    return textEditor(options);
   };
 
   const textEditor = (options: ColumnEditorOptions) => {
@@ -123,26 +129,16 @@ export default function CellEditingDemo() {
     );
   };
 
-  const totalEditor = (options: ColumnEditorOptions) => {
-    return (
-      <InputNumber
-        value={options.value}
-        onValueChange={(e: InputNumberValueChangeEvent) =>
-          options.editorCallback ? e.value : null
-        }
-        mode="currency"
-        currency="USD"
-        locale="en-US"
-        onKeyDown={(e) => e.stopPropagation()}
-      />
-    );
-  };
+  const priceEditor = (options: ColumnEditorOptions) => {
+    return <InputNumber value={options.value} onValueChange={(e: InputNumberValueChangeEvent) => options.editorCallback?(e.value) : null} mode="currency" currency="USD" locale="en-US" onKeyDown={(e) => e.stopPropagation()} />;
+};
 
-  const totalBodyTemplate = (rowData: Product) => {
-    return new Intl.NumberFormat("en-US", {
+  const totalBodyTemplate = (rowData: Dado) => {
+    const total = rowData.valor1 + rowData.valor2 + rowData.valor3;
+    return total.toLocaleString("pt-BR", {
       style: "currency",
-      currency: "USD",
-    }).format(rowData.total);
+      currency: "BRL",
+    });
   };
 
   return (
