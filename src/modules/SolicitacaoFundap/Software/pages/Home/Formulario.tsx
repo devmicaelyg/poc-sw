@@ -76,12 +76,12 @@ export default function InfosisFormTest() {
           />
         </div>
       </InfosisFieldset>
-      <hr />
+      <br />
       <InfosisFieldset
-      Title="DataTable"
+        Title="DataTable"
       >
         <InfosisDataTable
-        Data={dados}
+          Data={dados}
         >
           <Column field="code" header="Código"></Column>
           <Column field="name" header="Nome"></Column>

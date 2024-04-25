@@ -1,57 +1,76 @@
-import React, { useState } from "react";
-import { Panel } from "primereact/panel";
+import React, { useState, useEffect, useRef } from "react";
+import { Panel, PanelToggleEvent } from "primereact/panel";
 import { Button } from "primereact/button";
 import "./styles.css";
 
-export default function InfosisPanel(props: any) {
+interface InfosisPanelProps {
+  children: React.ReactNode;
+  showMinimizeButton?: boolean;
+  showMaximizeButton?: boolean;
+  showRefreshButton?: boolean;
+  showCloseButton?: boolean;
+  refreshButtonHandler?: () => void;
+}
+
+export default function InfosisPanel({
+  children,
+  showMinimizeButton = true,
+  showMaximizeButton = true,
+  showRefreshButton = true,
+  showCloseButton = true,
+  refreshButtonHandler
+}: InfosisPanelProps) {
   const [maximized, setMaximized] = useState(false);
   const [destroyed, setDestroyed] = useState(false);
+  const panelRef = useRef<any>(null);
 
-  const toggleMaximized = () => {
-    setMaximized(!maximized);
-  };
+  const toggleMaximized = () => setMaximized(prev => !prev);
+  const destroyPanel = () => setDestroyed(true);
 
-  const destroyPanel = () => {
-    setDestroyed(true);
-  };
+  useEffect(() => {
+    if (panelRef.current) {
+      if (maximized) {
+        panelRef.current.expand();
+      }
+    }
+  }, [maximized]);
 
-  const panelHeader = (options: {
-    className: any;
-    togglerElement: React.ReactElement<
-      any,
-      string | React.JSXElementConstructor<any>
-    >;
-  }) => {
-    const className = `${options.className} justify-content-space-between`;
+  const header = (options: { className: string, togglerElement: React.ReactElement }) => {
+    const headerClassName = `${options.className} justify-content-space-between`;
+    const buttonBaseClass = "p-panel-header-icon p-panel-toggler p-link";
 
     return (
-      <div className={className}>
+      <div className={headerClassName}>
         <div>Solicitação de Financiamento</div>
         <div>
-          <Button icon="pi pi-times" onClick={destroyPanel} />
+          {showMaximizeButton && (
+            <Button unstyled className={buttonBaseClass} icon={maximized ? "pi pi-window-minimize" : "pi pi-window-maximize"} onClick={toggleMaximized} />
+          )}
+          {showRefreshButton && (
+            <Button unstyled className={buttonBaseClass} icon="pi pi-refresh" onClick={refreshButtonHandler} />
+          )}
           {options.togglerElement}
-          <Button
-            icon={maximized ? "pi pi-window-minimize" : "pi pi-window-maximize"}
-            onClick={toggleMaximized}
-          />
+          {showCloseButton && (
+            <Button unstyled className={buttonBaseClass} icon="pi pi-times" onClick={destroyPanel} />
+          )}
         </div>
       </div>
     );
   };
 
-  if (destroyed) {
-    return null;
-  }
+  // const checkMaximizedState = (event: PanelToggleEvent) => {
+  //   debugger
+  // }
 
-  return (
+  return !destroyed ? (
     <Panel
-      headerTemplate={panelHeader}
-      toggleable
-      className={maximized ? "fullscreen" : undefined}
-      collapsed={maximized}
-      onCollapse={() => setMaximized(false)}
+      ref={panelRef}
+      headerTemplate={header}
+      toggleable={showMinimizeButton}
+      className={maximized ? "fullscreen" : ""}
+      // onToggle={checkMaximizedState}
     >
-      {props.children}
+      {children}
     </Panel>
-  );
+  ) : null;
 }

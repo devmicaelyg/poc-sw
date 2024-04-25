@@ -69,13 +69,12 @@ export default function Home() {
             <InfosisToolbar />
             <InfosisPanel>
               <Formulario />
+              <br />
+            <Formulario2 />
             </InfosisPanel>
-            <hr />
+            {/*
             <InfosisModal />
-            <hr />
-            <InfosisPanel>
-              <Formulario2 />
-            </InfosisPanel>
+            */}
           </div>
         </div>
       </div>
