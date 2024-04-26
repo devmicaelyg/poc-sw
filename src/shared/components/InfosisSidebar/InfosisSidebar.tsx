@@ -1,7 +1,7 @@
 import { Menu } from 'primereact/menu';
 import React from 'react';
 
-export default function Sidebar() {
+export default function InfosisSidebar() {
   const items = [
     {
       label: "Solicitação de financiamento",

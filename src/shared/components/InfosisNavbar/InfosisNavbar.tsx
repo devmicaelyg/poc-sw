@@ -9,7 +9,7 @@ import logobandes from '../../assets/logo-bandes.png';
 import InfosisDropdown from '../InfosisDropdown/InfosisDropdown';
 import  './styles.css'
 
-export default function Navbar(props: any) {
+export default function InfosisNavbar(props: any) {
  
   const start = (
     <div

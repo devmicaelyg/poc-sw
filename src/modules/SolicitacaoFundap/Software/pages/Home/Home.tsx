@@ -4,8 +4,8 @@ import InfosisBreadCrumb from '../../../../../shared/components/InfosisBreadCrum
 import InfosisDropdown from '../../../../../shared/components/InfosisDropdown/InfosisDropdown';
 import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
 import InfosisToolbar from '../../../../../shared/components/InfosisToolbar/InfosisToolbar';
-import Navbar from '../../../../../shared/components/Navbar/Navbar';
-import Sidebar from '../../../../../shared/components/Sidebar/Sidebar';
+import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/InfosisNavbar';
+import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
 import Formulario from './Formulario';
 
 export default function Home() {
@@ -49,14 +49,14 @@ export default function Home() {
           display: "block",
         }}
       >
-        <Navbar items={navbarItems} />
+        <InfosisNavbar items={navbarItems} />
         <div
           style={{
             display: "flex",
             flexDirection: "row",
           }}
         >
-          <Sidebar />
+          <InfosisSidebar />
           <div
             style={{
               display: "flex",
