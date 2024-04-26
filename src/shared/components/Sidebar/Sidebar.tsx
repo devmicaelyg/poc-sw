@@ -26,15 +26,17 @@ export default function Sidebar() {
   };
 
   return (
-    <Menu
-      model={items.map(item => ({...item, command: handleClick}))}
-      style={{
-        backgroundColor: "#49aedb",
-        height: "100vh",
-        width: 280,
-        border: 'none',
-        borderRadius: 0
-      }}
-    />
+    <div>
+      <Menu
+        model={items.map(item => ({ ...item, command: handleClick }))}
+        style={{
+          backgroundColor: "#49aedb",
+          height: "100vh",
+          width: 280,
+          border: 'none',
+          borderRadius: 0
+        }}
+      />
+    </div>
   );
 }

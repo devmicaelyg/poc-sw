@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
 
-import Navegacao from "../../../../../shared/components/InfosisBreadCrumb/InfosisBreadCrumb";
-import InfosisModal from "../../../../../shared/components/InfosisModal/InfosisModal";
-import Navbar from "../../../../../shared/components/Navbar/Navbar";
-import MenuLateral from "../../../../../shared/components/Sidebar/Sidebar";
-import Formulario from "./Formulario";
-import Formulario2 from "./Formulario2";
-import InfosisBreadCrumb from "../../../../../shared/components/InfosisBreadCrumb/InfosisBreadCrumb";
-import Sidebar from "../../../../../shared/components/Sidebar/Sidebar";
-import InfosisDropdown from "../../../../../shared/components/InfosisDropdown/InfosisDropdown";
-import InfosisToolbar from "../../../../../shared/components/InfosisToolbar/InfosisToolbar";
-import InfosisPanel from "../../../../../shared/components/InfosisPanel/InfosisPanel";
+import InfosisBreadCrumb from '../../../../../shared/components/InfosisBreadCrumb/InfosisBreadCrumb';
+import InfosisDropdown from '../../../../../shared/components/InfosisDropdown/InfosisDropdown';
+import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
+import InfosisToolbar from '../../../../../shared/components/InfosisToolbar/InfosisToolbar';
+import Navbar from '../../../../../shared/components/Navbar/Navbar';
+import Sidebar from '../../../../../shared/components/Sidebar/Sidebar';
+import Formulario from './Formulario';
 
 export default function Home() {
+  const [title, setTitle] = useState("");
+
+  useEffect(() => {
+    setTitle("Solicitação de Financiamento");
+  }, []);
+
   const navbarItems = [
     {
       template: (item: any) => (
@@ -54,9 +56,7 @@ export default function Home() {
             flexDirection: "row",
           }}
         >
-          <div>
-            <Sidebar />
-          </div>
+          <Sidebar />
           <div
             style={{
               display: "flex",
@@ -67,10 +67,8 @@ export default function Home() {
           >
             <InfosisBreadCrumb />
             <InfosisToolbar />
-            <InfosisPanel>
+            <InfosisPanel title={title}>
               <Formulario />
-              <br />
-            <Formulario2 />
             </InfosisPanel>
             {/*
             <InfosisModal />

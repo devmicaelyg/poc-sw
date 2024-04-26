@@ -8,11 +8,9 @@ export default function InfosisDataTable(props: any) {
     setDados(props.Data);
   }, [props.Data]);
 
-  console.log(props.wololo)
-
   return (
-      <DataTable value={dados} tableStyle={{ minWidth: "50rem" }}>
-        {props.children}
-      </DataTable>
+    <DataTable value={dados} tableStyle={{ minWidth: "50rem" }}>
+      {props.children}
+    </DataTable>
   );
 }

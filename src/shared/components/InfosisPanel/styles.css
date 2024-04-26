@@ -32,3 +32,7 @@
 .p-panel.fullscreen .p-panel-content {
   height: 100vh;
 }
+
+.p-toggleable-content {
+  transition: none !important;
+}

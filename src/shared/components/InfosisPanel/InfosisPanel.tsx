@@ -1,10 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
-import { Panel, PanelToggleEvent } from "primereact/panel";
-import { Button } from "primereact/button";
-import "./styles.css";
+import './styles.css';
+
+import { Button } from 'primereact/button';
+import { Panel, PanelToggleEvent } from 'primereact/panel';
+import React, { useEffect, useRef, useState } from 'react';
 
 interface InfosisPanelProps {
   children: React.ReactNode;
+  title: string;
   showMinimizeButton?: boolean;
   showMaximizeButton?: boolean;
   showRefreshButton?: boolean;
@@ -14,6 +16,7 @@ interface InfosisPanelProps {
 
 export default function InfosisPanel({
   children,
+  title,
   showMinimizeButton = true,
   showMaximizeButton = true,
   showRefreshButton = true,
@@ -22,17 +25,19 @@ export default function InfosisPanel({
 }: InfosisPanelProps) {
   const [maximized, setMaximized] = useState(false);
   const [destroyed, setDestroyed] = useState(false);
-  const panelRef = useRef<any>(null);
+  const [collapsed, setCollapsed] = useState(false);
+  const [className, setClassName] = useState("");
 
   const toggleMaximized = () => setMaximized(prev => !prev);
   const destroyPanel = () => setDestroyed(true);
 
   useEffect(() => {
-    if (panelRef.current) {
-      if (maximized) {
-        panelRef.current.expand();
-      }
+
+    if (maximized) {
+      setCollapsed(false);
     }
+
+    setClassName(maximized ? "fullscreen" : "");
   }, [maximized]);
 
   const header = (options: { className: string, togglerElement: React.ReactElement }) => {
@@ -41,7 +46,7 @@ export default function InfosisPanel({
 
     return (
       <div className={headerClassName}>
-        <div>Solicitação de Financiamento</div>
+        <div>{title}</div>
         <div>
           {showMaximizeButton && (
             <Button unstyled className={buttonBaseClass} icon={maximized ? "pi pi-window-minimize" : "pi pi-window-maximize"} onClick={toggleMaximized} />
@@ -58,17 +63,23 @@ export default function InfosisPanel({
     );
   };
 
-  // const checkMaximizedState = (event: PanelToggleEvent) => {
-  //   debugger
-  // }
+  const checkMaximizedState = (event: PanelToggleEvent) => {
+    if (maximized) {
+      setClassName("");
+      setMaximized(false);
+      setCollapsed(false);
+    }
+
+    setCollapsed(ref => !ref)
+  }
 
   return !destroyed ? (
     <Panel
-      ref={panelRef}
+      collapsed={collapsed}
       headerTemplate={header}
       toggleable={showMinimizeButton}
-      className={maximized ? "fullscreen" : ""}
-      // onToggle={checkMaximizedState}
+      className={className}
+      onToggle={checkMaximizedState}
     >
       {children}
     </Panel>
