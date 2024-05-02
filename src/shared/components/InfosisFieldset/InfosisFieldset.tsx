@@ -1,19 +1,15 @@
-import { Fieldset } from "primereact/fieldset";
-import React from "react";
+import React from 'react';
+import { Fieldset, FieldsetProps } from 'primereact/fieldset'; // Ensure FieldsetProps is imported correctly
+import './styles.css';
 
-export default function InfosisFieldset(props: any) {
+export interface InfosisFieldsetProps extends FieldsetProps { }
+
+export default function InfosisFieldset(props: InfosisFieldsetProps) {
   return (
-    <React.Fragment>
-      <Fieldset
-        legend={props.Title}
-        unstyled
-        style={{
-          border: "1px solid #c2c6cc",
-          borderRadius: 20,
-        }}
-      >
-        {props.children}
-      </Fieldset>
-    </React.Fragment>
+    <Fieldset
+      {...props}
+      className={`infosis-fieldset ${(props.className || '')}`}
+    >
+    </Fieldset>
   );
 }
