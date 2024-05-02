@@ -1,15 +1,15 @@
 .infosis-fieldset {
-  border: 1px solid #c2c6cc !important;
-  border-radius: 15px !important;
+  border: 1px solid #c2c6cc;
+  border-radius: 15px;
 }
 
 .infosis-fieldset legend {
   font-weight: normal;
-  color: #4b5563 !important;
-  padding: 0 0.8rem !important;
-  border: unset !important;
+  color: #4b5563;
+  padding: 0 0.8rem;
+  border: unset;
 }
 
-.p-fieldset .p-fieldset-content {
+.infosis-fieldset .p-fieldset-content {
   padding: 0.8rem;
 }
