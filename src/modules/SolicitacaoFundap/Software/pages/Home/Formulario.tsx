@@ -41,7 +41,7 @@ export default function InfosisFormTest() {
 
   return (
     <div className="card">
-      <InfosisFieldset Title="Identificação da solicitação">
+      <InfosisFieldset legend="Identificação da solicitação">
         <div
           style={{
             marginBottom: 10,
@@ -77,8 +77,8 @@ export default function InfosisFormTest() {
         </div>
       </InfosisFieldset>
       <br />
-      <InfosisFieldset
-        Title="DataTable"
+      {/* <InfosisFieldset
+        Title="Produtos"
       >
         <InfosisDataTable
           Data={dados}
@@ -88,7 +88,7 @@ export default function InfosisFormTest() {
           <Column field="category" header="Categoria"></Column>
           <Column field="quantity" header="Quantidade"></Column>
         </InfosisDataTable>
-      </InfosisFieldset>
+      </InfosisFieldset> */}
     </div>
   );
 }

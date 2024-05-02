@@ -7,13 +7,9 @@ import InfosisToolbar from '../../../../../shared/components/InfosisToolbar/Info
 import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/InfosisNavbar';
 import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
 import Formulario from './Formulario';
+import Formulario2 from './Formulario2';
 
 export default function Home() {
-  const [title, setTitle] = useState("");
-
-  useEffect(() => {
-    setTitle("Solicitação de Financiamento");
-  }, []);
 
   const navbarItems = [
     {
@@ -67,8 +63,12 @@ export default function Home() {
           >
             <InfosisBreadCrumb />
             <InfosisToolbar />
-            <InfosisPanel title={title}>
+            <InfosisPanel title={"Solicitação de Financiamento"}>
               <Formulario />
+            </InfosisPanel>
+            <InfosisToolbar />
+            <InfosisPanel title={"Apuração de ICMS do mês"}>
+              <Formulario2 />
             </InfosisPanel>
             {/*
             <InfosisModal />

@@ -25,11 +25,13 @@
   border: none
 }
 
-.p-panel.fullscreen .p-panel-header {
+.fullscreen .p-panel-header {
+  background-color: #2897ca;
+  color: white;
   border-radius: unset;
 }
 
-.p-panel.fullscreen .p-panel-content {
+.fullscreen .p-panel-content {
   height: 100vh;
 }
 

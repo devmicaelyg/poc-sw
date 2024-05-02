@@ -80,6 +80,7 @@ export default function InfosisPanel({
       toggleable={showMinimizeButton}
       className={className}
       onToggle={checkMaximizedState}
+      style={{ width: "100%" }}
     >
       {children}
     </Panel>

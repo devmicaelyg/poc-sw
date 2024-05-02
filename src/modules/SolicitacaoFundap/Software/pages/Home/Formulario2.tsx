@@ -57,7 +57,7 @@ const dados: Dado[] = [
   },
 ];
 
-export default function CellEditingDemo() {
+export default function Formulario2() {
   const [products, setProducts] = useState<Product[] | null>(null);
 
   const columns: ColumnMeta[] = [
