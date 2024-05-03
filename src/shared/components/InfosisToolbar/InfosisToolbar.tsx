@@ -1,30 +1,29 @@
-import React from "react";
-import "./styles.css";
-import { PrimeIcons } from "primereact/api";
+import React from 'react';
+import './styles.css';
 
-export default function InfosisToolbar() {
-  return (
-    <React.Fragment>
-      <div className="infosis-toolbar">
-        <ul>
-          <li>
-            <i className="pi pi-file"></i>
-            Incluir Solicitação
-          </li>
-          <li>
-            <i className="pi pi-folder-open"></i>
-            Abrir Solicitação
-          </li>
-          <li>
-            <i className="pi pi-trash"></i>
-            Excluir Solicitação
-          </li>
-          <li>
-            <i className="pi pi-save"></i>
-            Salvar Solicitação
-          </li>
-        </ul>
-      </div>
-    </React.Fragment>
-  );
+export interface InfosisToolbarItem {
+  text: string;
+  icon: string;
+  handler: () => void;
 }
+
+export interface InfosisToolbarProps {
+  items: InfosisToolbarItem[];
+}
+
+const InfosisToolbar: React.FC<InfosisToolbarProps> = ({ items }) => {
+  return (
+    <div className="infosis-toolbar p-1">
+      <ul>
+        {items.map((item, index) => (
+          <li key={index} onClick={item.handler}>
+            <i className={item.icon}></i>
+            {item.text}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default InfosisToolbar;

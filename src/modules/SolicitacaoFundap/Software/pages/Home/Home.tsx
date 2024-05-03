@@ -2,15 +2,13 @@ import React, { useEffect, useState } from 'react';
 
 import InfosisBreadCrumb from '../../../../../shared/components/InfosisBreadCrumb/InfosisBreadCrumb';
 import InfosisDropdown from '../../../../../shared/components/InfosisDropdown/InfosisDropdown';
-import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
-import InfosisToolbar from '../../../../../shared/components/InfosisToolbar/InfosisToolbar';
 import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/InfosisNavbar';
+import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
 import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
 import Formulario from './Formulario';
 import Formulario2 from './Formulario2';
 
 export default function Home() {
-
   const navbarItems = [
     {
       template: (item: any) => (
@@ -37,6 +35,55 @@ export default function Home() {
       ),
     },
   ];
+  
+
+  const toolbarItems = [
+    {
+      text: "Incluir Solicitação",
+      icon: "pi pi-file",
+      handler: () => {
+        alert("Incluir Solicitação");
+      },
+    },
+    {
+      text: "Abrir Solicitação",
+      icon: "pi pi-folder-open",
+      handler: () => {
+        alert("Abrir Solicitação");
+      },
+    },
+    {
+      text: "Excluir Solicitação",
+      icon: "pi pi-trash",
+      handler: () => {
+        alert("Excluir Solicitação");
+      },
+    },
+    {
+      text: "Salvar Solicitação",
+      icon: "pi pi-save",
+      handler: () => {
+        alert("Salvar Solicitação");
+      },
+    },
+  ];
+
+  const toolbarItems2 = [
+    {
+      text: "Incluir Solicitação",
+      icon: "pi pi-file",
+      handler: () => {
+        alert("Incluir Solicitação");
+      },
+    },
+    {
+      text: "Abrir Solicitação",
+      icon: "pi pi-folder-open",
+      handler: () => {
+        alert("Abrir Solicitação");
+      },
+    }
+  ];
 
   return (
     <React.Fragment>
@@ -62,12 +109,16 @@ export default function Home() {
             }}
           >
             <InfosisBreadCrumb />
-            <InfosisToolbar />
-            <InfosisPanel title={"Solicitação de Financiamento"}>
+            <InfosisPanel
+            title={"Solicitação de Financiamento"}
+            toolbarItems={toolbarItems}
+            >
               <Formulario />
             </InfosisPanel>
-            <InfosisToolbar />
-            <InfosisPanel title={"Apuração de ICMS do mês"}>
+            <InfosisPanel
+            title={"Apuração de ICMS do mês"}
+            toolbarItems={toolbarItems2}
+            >
               <Formulario2 />
             </InfosisPanel>
             {/*

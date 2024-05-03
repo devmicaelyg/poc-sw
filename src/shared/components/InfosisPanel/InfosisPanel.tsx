@@ -3,6 +3,7 @@ import './styles.css';
 import { Button } from 'primereact/button';
 import { Panel, PanelToggleEvent } from 'primereact/panel';
 import React, { useEffect, useRef, useState } from 'react';
+import InfosisToolbar, { InfosisToolbarItem } from '../InfosisToolbar/InfosisToolbar';
 
 interface InfosisPanelProps {
   children: React.ReactNode;
@@ -11,6 +12,7 @@ interface InfosisPanelProps {
   showMaximizeButton?: boolean;
   showRefreshButton?: boolean;
   showCloseButton?: boolean;
+  toolbarItems?: InfosisToolbarItem[];
   refreshButtonHandler?: () => void;
 }
 
@@ -21,11 +23,12 @@ export default function InfosisPanel({
   showMaximizeButton = true,
   showRefreshButton = true,
   showCloseButton = true,
+  toolbarItems = [],
   refreshButtonHandler
 }: InfosisPanelProps) {
   const [maximized, setMaximized] = useState(false);
   const [destroyed, setDestroyed] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
+  const [collapsed, setCollapsed] = useState(true);
   const [className, setClassName] = useState("");
 
   const toggleMaximized = () => setMaximized(prev => !prev);
@@ -73,16 +76,25 @@ export default function InfosisPanel({
     setCollapsed(ref => !ref)
   }
 
-  return !destroyed ? (
-    <Panel
-      collapsed={collapsed}
-      headerTemplate={header}
-      toggleable={showMinimizeButton}
-      className={className}
-      onToggle={checkMaximizedState}
-      style={{ width: "100%" }}
-    >
-      {children}
-    </Panel>
-  ) : null;
+  return (
+    <React.Fragment>
+      {!destroyed && (
+        <div className={`${className}`}
+        >
+          {!collapsed && (
+            <InfosisToolbar items={toolbarItems} />
+          )}
+          <Panel
+            collapsed={collapsed}
+            headerTemplate={header}
+            toggleable={showMinimizeButton}
+            onToggle={checkMaximizedState}
+            style={{ width: "100%" }}
+          >
+            {children}
+          </Panel>
+        </div>
+      )}
+    </React.Fragment>
+  );
 }
