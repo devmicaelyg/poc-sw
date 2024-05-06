@@ -35,7 +35,6 @@ export default function Home() {
       ),
     },
   ];
-  
 
   const toolbarItems = [
     {
@@ -110,20 +109,12 @@ export default function Home() {
           >
             <InfosisBreadCrumb />
             <InfosisPanel
-            title={"Solicitação de Financiamento"}
-            toolbarItems={toolbarItems}
+              title={"Solicitação de Financiamento"}
+              toolbarItems={toolbarItems}
             >
               <Formulario />
+              {/* <Formulario2 /> */}
             </InfosisPanel>
-            <InfosisPanel
-            title={"Apuração de ICMS do mês"}
-            toolbarItems={toolbarItems2}
-            >
-              <Formulario2 />
-            </InfosisPanel>
-            {/*
-            <InfosisModal />
-            */}
           </div>
         </div>
       </div>

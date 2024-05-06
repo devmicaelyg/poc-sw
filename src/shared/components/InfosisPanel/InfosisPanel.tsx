@@ -40,7 +40,7 @@ export default function InfosisPanel({
       setCollapsed(false);
     }
 
-    setClassName(maximized ? "fullscreen" : "");
+    setClassName(maximized ? "infosis-panel fullscreen" : "infosis-panel");
   }, [maximized]);
 
   const header = (options: { className: string, togglerElement: React.ReactElement }) => {
@@ -68,7 +68,7 @@ export default function InfosisPanel({
 
   const checkMaximizedState = (event: PanelToggleEvent) => {
     if (maximized) {
-      setClassName("");
+      setClassName("infosis-panel");
       setMaximized(false);
       setCollapsed(false);
     }
@@ -79,21 +79,17 @@ export default function InfosisPanel({
   return (
     <React.Fragment>
       {!destroyed && (
-        <div className={`${className}`}
+        <Panel
+          collapsed={collapsed}
+          headerTemplate={header}
+          toggleable={showMinimizeButton}
+          onToggle={checkMaximizedState}
+          style={{ width: "100%" }}
+          className={`${className}`}
         >
-          {!collapsed && (
-            <InfosisToolbar items={toolbarItems} />
-          )}
-          <Panel
-            collapsed={collapsed}
-            headerTemplate={header}
-            toggleable={showMinimizeButton}
-            onToggle={checkMaximizedState}
-            style={{ width: "100%" }}
-          >
-            {children}
-          </Panel>
-        </div>
+          <InfosisToolbar items={toolbarItems} />
+          {children}
+        </Panel>
       )}
     </React.Fragment>
   );

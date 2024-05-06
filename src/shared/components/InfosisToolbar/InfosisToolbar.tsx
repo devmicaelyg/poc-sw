@@ -13,11 +13,14 @@ export interface InfosisToolbarProps {
 
 const InfosisToolbar: React.FC<InfosisToolbarProps> = ({ items }) => {
   return (
-    <div className="infosis-toolbar p-1">
+    <div className="infosis-toolbar mb-3 col-12 grid">
       <ul>
         {items.map((item, index) => (
           <li key={index} onClick={item.handler}>
-            <i className={item.icon}></i>
+            <i className={
+              `${item.icon} `
+            }
+            ></i>
             {item.text}
           </li>
         ))}

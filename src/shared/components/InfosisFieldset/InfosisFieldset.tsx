@@ -8,7 +8,7 @@ export default function InfosisFieldset(props: InfosisFieldsetProps) {
   return (
     <Fieldset
       {...props}
-      className={`infosis-fieldset ${(props.className || '')}`}
+      className={`infosis-fieldset col-12 ${(props.className || '')}`}
     >
     </Fieldset>
   );

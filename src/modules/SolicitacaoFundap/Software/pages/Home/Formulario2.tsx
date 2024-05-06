@@ -142,7 +142,6 @@ export default function Formulario2() {
   };
 
   return (
-    <div className="card p-fluid">
       <DataTable
         editMode="cell"
         value={dados}
@@ -166,6 +165,5 @@ export default function Formulario2() {
           );
         })}
       </DataTable>
-    </div>
   );
 }

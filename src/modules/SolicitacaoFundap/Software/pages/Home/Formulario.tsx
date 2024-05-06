@@ -40,45 +40,43 @@ export default function InfosisFormTest() {
   const width = "180px";
 
   return (
-    <div className="card">
+    <div className="mb-3 col-12 grid">
       <InfosisFieldset legend="Identificação da solicitação">
-        <div
-          style={{
-            marginBottom: 10,
-            width: "100%",
-          }}
-        >
-          <InfosisInput
-            width="100%"
-            label="Empresa Solicitante"
-            labelWidth={width}
-            tipo="text"
-          />
-        </div>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            gap: 10,
-          }}
-        >
-          <InfosisInput
-            width="50%"
-            label="Mês do contrato"
-            labelWidth={width}
-            tipo="text"
-          />
-          <InfosisInput
-            width="50%"
-            label="Situação"
-            labelWidth={width}
-            tipo="text"
-          />
+        <div className="grid col-12">
+          <div className="field col-12">
+            <InfosisInput
+              width="100%"
+              label="Empresa Solicitante"
+              labelWidth={width}
+              tipo="text"
+            />
+          </div>
+          <div
+            className="field col-12"
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 10,
+            }}
+          >
+            <InfosisInput
+              width="50%"
+              label="Mês do contrato"
+              labelWidth={width}
+              tipo="text"
+            />
+            <InfosisInput
+              width="50%"
+              label="Situação"
+              labelWidth={width}
+              tipo="text"
+            />
+          </div>
         </div>
       </InfosisFieldset>
       <br />
-      {/* <InfosisFieldset
-        Title="Produtos"
+      <InfosisFieldset
+        legend="Produtos"
       >
         <InfosisDataTable
           Data={dados}
@@ -88,7 +86,7 @@ export default function InfosisFormTest() {
           <Column field="category" header="Categoria"></Column>
           <Column field="quantity" header="Quantidade"></Column>
         </InfosisDataTable>
-      </InfosisFieldset> */}
+      </InfosisFieldset>
     </div>
   );
 }

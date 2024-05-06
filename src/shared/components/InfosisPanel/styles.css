@@ -1,4 +1,4 @@
-.fullscreen {
+.infosis-panel.fullscreen {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,31 +10,38 @@
   height: 100vh;
 }
 
-.p-panel-header {
+.infosis-panel .p-panel-header {
   background-color: #2897ca;
   color: white;
   border-radius: 10px 10px 0 0;
 }
 
 
-.p-panel-header-icon {
+.infosis-panel .p-panel-header-icon {
   color: white;
 }
 
-.p-panel-content {
-  border: none
+.infosis-panel .p-panel-content {
+  /* border: 1px solid #c2c6cc; */
+  border-radius: 0 0 10px 10px;
+  background-color: #f8f9fa;
+  margin-bottom: 10px;
 }
 
-.fullscreen .p-panel-header {
+.infosis-panel.fullscreen .p-panel-content {
+  height: 100vh;
+}
+
+.fullscreen .infosis-panel.p-panel-header {
   background-color: #2897ca;
   color: white;
   border-radius: unset;
 }
 
-.fullscreen .p-panel-content {
+.fullscreen .infosis-panel.p-panel-content {
   height: 100vh;
 }
 
-.p-toggleable-content {
+.infosis-panel .p-toggleable-content {
   transition: none !important;
 }
