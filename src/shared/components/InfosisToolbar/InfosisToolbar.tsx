@@ -13,8 +13,8 @@ export interface InfosisToolbarProps {
 
 const InfosisToolbar: React.FC<InfosisToolbarProps> = ({ items }) => {
   return (
-    <div className="infosis-toolbar mb-3 col-12 grid">
-      <ul>
+    <div className="infosis-toolbar mb-3 col-12 grid ">
+      <ul className='overflow-x-auto'>
         {items.map((item, index) => (
           <li key={index} onClick={item.handler}>
             <i className={

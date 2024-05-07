@@ -1,12 +1,14 @@
 import './styles.css';
+import 'primeicons/primeicons.css';
 
 import { Button } from 'primereact/button';
 import { Panel, PanelToggleEvent } from 'primereact/panel';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+
 import InfosisToolbar, { InfosisToolbarItem } from '../InfosisToolbar/InfosisToolbar';
 
 interface InfosisPanelProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   title: string;
   showMinimizeButton?: boolean;
   showMaximizeButton?: boolean;
@@ -50,16 +52,19 @@ export default function InfosisPanel({
     return (
       <div className={headerClassName}>
         <div>{title}</div>
-        <div>
+        <div className='flex flex-row gap-1'>
           {showMaximizeButton && (
-            <Button unstyled className={buttonBaseClass} icon={maximized ? "pi pi-window-minimize" : "pi pi-window-maximize"} onClick={toggleMaximized} />
+            <Button
+              className={buttonBaseClass}
+              icon="pi p-icon pi-expand"
+              onClick={toggleMaximized} />
           )}
           {showRefreshButton && (
-            <Button unstyled className={buttonBaseClass} icon="pi pi-refresh" onClick={refreshButtonHandler} />
+            <Button className={buttonBaseClass} icon="pi pi-refresh" onClick={refreshButtonHandler} />
           )}
           {options.togglerElement}
           {showCloseButton && (
-            <Button unstyled className={buttonBaseClass} icon="pi pi-times" onClick={destroyPanel} />
+            <Button className={buttonBaseClass} icon="pi pi-times" onClick={destroyPanel} />
           )}
         </div>
       </div>
@@ -73,7 +78,7 @@ export default function InfosisPanel({
       setCollapsed(false);
     }
 
-    setCollapsed(ref => !ref)
+    setCollapsed(prev => !prev)
   }
 
   return (
@@ -84,7 +89,6 @@ export default function InfosisPanel({
           headerTemplate={header}
           toggleable={showMinimizeButton}
           onToggle={checkMaximizedState}
-          style={{ width: "100%" }}
           className={`${className}`}
         >
           <InfosisToolbar items={toolbarItems} />

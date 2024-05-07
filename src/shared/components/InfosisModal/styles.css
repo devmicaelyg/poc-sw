@@ -1,3 +1,49 @@
-.p-dialog-footer {
-    border-radius: 0 0 50px 50px !important;
+.infosis-modal.p-dialog {
+    box-shadow: none;
+}
+
+.infosis-modal .p-dialog-header {
+    border-radius: 30px 30px 0 0 !important;
+    border-top: 1px solid #ebeaea;
+    border-left: 1px solid #ebeaea;
+    border-right: 1px solid #ebeaea;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.infosis-modal .p-dialog-title {
+    color: #5a5a5a;
+    font-weight: 400;
+}
+
+.infosis-modal .p-dialog-content {
+    padding: 1rem 2rem 1rem 2rem;
+    border: 1px solid #ebeaea;
+}
+
+.infosis-modal .p-dialog-footer {
+    border-radius: 0 0 30px 30px !important;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #ebeaea;
+    border-left: 1px solid #ebeaea;
+    border-right: 1px solid #ebeaea;
+}
+
+.infosis-modal-footer button .p-button-label {
+    font-weight: 400;
+}
+
+.infosis-modal-btn-fechar {
+    background-color: transparent;
+    color: #64748b;
+    border: 1px solid;
+    height: 40px;
+}
+
+.infosis-modal-btn-salvar {
+    color: #ffffff;
+    background: #00b050;
+    border: 1px solid #00b050;
+    height: 40px;
 }
