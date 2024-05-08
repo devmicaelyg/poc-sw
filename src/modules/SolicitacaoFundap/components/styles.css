@@ -1,0 +1,22 @@
+.infosis-modal-a .p-dialog-title {
+    color: #5a5a5a;
+    font-weight: 400;
+}
+
+.infosis-modal-a-btn-fechar {
+    background-color: transparent;
+    color: #64748b;
+    border: 1px solid;
+    height: 40px;
+}
+
+.infosis-modal-a-btn-salvar {
+    color: #ffffff;
+    background: #00b050;
+    border: 1px solid #00b050;
+    height: 40px;
+}
+
+.infosis-modal-a-footer button .p-button-label {
+    font-weight: 400;
+}

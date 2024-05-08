@@ -1,3 +1,4 @@
+import { Button } from 'primereact/button';
 import React, { useEffect, useState } from 'react';
 
 import InfosisBreadCrumb from '../../../../../shared/components/InfosisBreadCrumb/InfosisBreadCrumb';
@@ -6,9 +7,13 @@ import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/Infosi
 import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
 import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
 import Formulario from './Formulario';
-import Formulario2 from './Formulario2';
+import ModalTipoA from '../../../components/ModalTipoA';
+
+import './styles.css';
 
 export default function Home() {
+  const [visible, setVisible] = useState<boolean>(false);
+
   const navbarItems = [
     {
       template: (item: any) => (
@@ -108,6 +113,24 @@ export default function Home() {
             }}
           >
             <InfosisBreadCrumb />
+            <div className='grid col-12'>
+              <Button
+                label="Abrir Modal Tipo A"
+                icon="pi pi-external-link"
+                onClick={() => setVisible(true)}
+                className='w-3'
+              />
+            </div>
+            <ModalTipoA
+              header="Modal Tipo A"
+              visible={visible}
+              onClose={() => setVisible(false)}
+              onSave={() => setVisible(false)}
+              onHide={() => setVisible(false)}
+              className='w-10'
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </ModalTipoA>
             <InfosisPanel
               title={"Solicitação de Financiamento"}
               toolbarItems={toolbarItems}
