@@ -1,3 +1,5 @@
+import './styles.css';
+
 import { Button } from 'primereact/button';
 import React, { useEffect, useState } from 'react';
 
@@ -6,13 +8,13 @@ import InfosisDropdown from '../../../../../shared/components/InfosisDropdown/In
 import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/InfosisNavbar';
 import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
 import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
+import InfosisValidationModal from '../../../components/InfosisValidationModal/InfosisValidationModal';
+import ModalTipoA from '../../../components/ModalTipoA/ModalTipoA';
 import Formulario from './Formulario';
-import ModalTipoA from '../../../components/ModalTipoA';
-
-import './styles.css';
 
 export default function Home() {
-  const [visible, setVisible] = useState<boolean>(false);
+  const [modalAVisible, setmodalAVisible] = useState<boolean>(false);
+  const [modalBVisible, setmodalBVisible] = useState<boolean>(false);
 
   const navbarItems = [
     {
@@ -113,24 +115,37 @@ export default function Home() {
             }}
           >
             <InfosisBreadCrumb />
-            <div className='grid col-12'>
+            <div className='grid col-12 gap-2'>
               <Button
                 label="Abrir Modal Tipo A"
                 icon="pi pi-external-link"
-                onClick={() => setVisible(true)}
+                onClick={() => setmodalAVisible(true)}
+                className='w-3'
+              />
+              <Button
+                label="Abrir Modal Tipo B"
+                icon="pi pi-external-link"
+                onClick={() => setmodalBVisible(true)}
                 className='w-3'
               />
             </div>
             <ModalTipoA
               header="Modal Tipo A"
-              visible={visible}
-              onClose={() => setVisible(false)}
-              onSave={() => setVisible(false)}
-              onHide={() => setVisible(false)}
-              className='w-10'
+              visible={modalAVisible}
+              onClose={() => setmodalAVisible(false)}
+              onSave={() => setmodalAVisible(false)}
+              onHide={() => setmodalAVisible(false)}
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </ModalTipoA>
+            <InfosisValidationModal
+              header="Modal de Validação"
+              visible={modalBVisible}
+              onClose={() => setmodalBVisible(false)}
+              onHide={() => setmodalBVisible(false)}
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </InfosisValidationModal>
             <InfosisPanel
               title={"Solicitação de Financiamento"}
               toolbarItems={toolbarItems}

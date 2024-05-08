@@ -1,3 +1,7 @@
+.infosis-modal {
+    max-width: 800px;
+}
+
 .infosis-modal.p-dialog {
     box-shadow: none;
 }
