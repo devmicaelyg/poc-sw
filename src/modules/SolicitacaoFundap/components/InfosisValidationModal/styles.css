@@ -14,8 +14,13 @@
     font-weight: 400;
 }
 
-.infosis-validation-modal-error-message{
-    color: #c40000;
-    font-size: large;
+.infosis-error-col-header {
+    color: #7e7979;
     font-weight: bold;
+    background-color: transparent;
+}
+
+.infosis-error-col-body {
+    color: #4b5563;
+    background-color: transparent;
 }

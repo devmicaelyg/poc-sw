@@ -8,9 +8,9 @@ import InfosisDropdown from '../../../../../shared/components/InfosisDropdown/In
 import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/InfosisNavbar';
 import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
 import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
-import InfosisValidationModal from '../../../components/InfosisValidationModal/InfosisValidationModal';
 import ModalTipoA from '../../../components/ModalTipoA/ModalTipoA';
 import Formulario from './Formulario';
+import InfosisValidationModal, { ValidationError } from '../../../components/InfosisValidationModal/InfosisValidationModal';
 
 export default function Home() {
   const [modalAVisible, setmodalAVisible] = useState<boolean>(false);
@@ -73,23 +73,26 @@ export default function Home() {
       },
     },
   ];
-
-  const toolbarItems2 = [
+  
+  const ValidationErrors: ValidationError[] = [
     {
-      text: "Incluir Solicitação",
-      icon: "pi pi-file",
-      handler: () => {
-        alert("Incluir Solicitação");
-      },
+      id: "1",
+      validation: "Nome",
+      description: "Nome é obrigatório",
     },
     {
-      text: "Abrir Solicitação",
-      icon: "pi pi-folder-open",
-      handler: () => {
-        alert("Abrir Solicitação");
-      },
+      id: "2",
+      validation: "Tipo de Documento",
+      description: "Tipo de Documento é obrigatório",
+    },
+    {
+      id: "3",
+      validation: "Numero do Documento",
+      description: "Numero do Documento é obrigatório",
     }
   ];
+
+  const details = "Ao menos um dos campos obrigatórios não foi preenchido. Favor verificar os campos indicados.";
 
   return (
     <React.Fragment>
@@ -143,8 +146,9 @@ export default function Home() {
               visible={modalBVisible}
               onClose={() => setmodalBVisible(false)}
               onHide={() => setmodalBVisible(false)}
+              details={details}
+              validationErrors={ValidationErrors}
             >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </InfosisValidationModal>
             <InfosisPanel
               title={"Solicitação de Financiamento"}

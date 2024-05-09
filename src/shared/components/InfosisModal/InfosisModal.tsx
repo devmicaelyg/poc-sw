@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { Dialog, DialogProps } from 'primereact/dialog';
 import './styles.css';
 
-export interface InfosisModalProps extends DialogProps {}
+export interface InfosisModalProps extends DialogProps { }
 
 const InfosisModal: React.FC<InfosisModalProps> = ({
   className,
@@ -11,8 +11,10 @@ const InfosisModal: React.FC<InfosisModalProps> = ({
 
   return (
     <Dialog
-      className={`infosis-modal ${className}`}
+      resizable={false}
+      draggable={false}
       {...props}
+      className={`infosis-modal ${className}`}
     />
   );
 }

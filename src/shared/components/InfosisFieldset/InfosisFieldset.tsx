@@ -4,12 +4,17 @@ import './styles.css';
 
 export interface InfosisFieldsetProps extends FieldsetProps { }
 
-export default function InfosisFieldset(props: InfosisFieldsetProps) {
+const InfosisFieldset: React.FC<InfosisFieldsetProps> = ({
+  className,
+  ...props
+}) => {
   return (
     <Fieldset
+      className={`infosis-fieldset col-12 ${className}`}
       {...props}
-      className={`infosis-fieldset col-12 ${(props.className || '')}`}
     >
     </Fieldset>
   );
 }
+
+export default InfosisFieldset;

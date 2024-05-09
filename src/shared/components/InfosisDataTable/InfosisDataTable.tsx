@@ -1,16 +1,17 @@
-import { DataTable } from 'primereact/datatable';
-import React, { useEffect, useState } from 'react';
+import { DataTable, DataTableProps, DataTableValueArray } from 'primereact/datatable';
+import React from 'react';
 
-export default function InfosisDataTable(props: any) {
-  const [dados, setDados] = useState<any[]>([]);
 
-  useEffect(() => {
-    setDados(props.Data);
-  }, [props.Data]);
-
+const InfosisDataTable: React.FC<DataTableProps<DataTableValueArray>> = ({
+  className,
+  ...props
+}) => {
   return (
-    <DataTable value={dados} tableStyle={{ minWidth: "50rem" }}>
-      {props.children}
-    </DataTable>
+    <DataTable
+      className={`infosis-datatable ${className}`}
+      {...props}
+    />
   );
 }
+
+export default InfosisDataTable;

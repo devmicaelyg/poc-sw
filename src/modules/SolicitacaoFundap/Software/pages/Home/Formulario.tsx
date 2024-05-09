@@ -79,7 +79,7 @@ export default function InfosisFormTest() {
         legend="Produtos"
       >
         <InfosisDataTable
-          Data={dados}
+        value={dados}
         >
           <Column field="code" header="Código"></Column>
           <Column field="name" header="Nome"></Column>
