@@ -23,7 +23,7 @@
 
 /* Estilos do cabeçalho dentro do painel quando está em modo tela cheia */
 .infosis-panel.fullscreen .p-panel-header {
-  border-radius: sem definição;
+  border-radius: unset;
 }
 
 /* Estilos dos ícones dentro do cabeçalho do painel */
