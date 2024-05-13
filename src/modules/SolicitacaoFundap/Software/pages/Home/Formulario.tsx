@@ -2,6 +2,7 @@ import InfosisInput from "../../../../../shared/components/InfosisInput/InfosisI
 import InfosisFieldset from "../../../../../shared/components/InfosisFieldset/InfosisFieldset";
 import InfosisDataTable from "../../../../../shared/components/InfosisDataTable/InfosisDataTable";
 import { Column } from "primereact/column";
+import { InputText } from "primereact/inputtext";
 
 
 interface Dado {
@@ -42,50 +43,67 @@ export default function InfosisFormTest() {
   return (
     <div className="mb-3 col-12 grid">
       <InfosisFieldset legend="Identificação da solicitação">
-        <div className="grid col-12">
-          <div className="field col-12">
-            <InfosisInput
-              width="100%"
-              label="Empresa Solicitante"
-              labelWidth={width}
-              tipo="text"
-            />
-          </div>
-          <div
-            className="field col-12"
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              gap: 10,
-            }}
-          >
-            <InfosisInput
-              width="50%"
-              label="Mês do contrato"
-              labelWidth={width}
-              tipo="text"
-            />
-            <InfosisInput
-              width="50%"
-              label="Situação"
-              labelWidth={width}
-              tipo="text"
-            />
-          </div>
-        </div>
+      <div className="field grid">
+                <label htmlFor="cfop" className="col-12 mb-2 md:col-3 md:mb-0">
+                    CFOP:
+                </label>
+                <div className="col-12 md:col-5">
+                    <InputText id="cfop" type="text" className="w-full" />
+                </div>
+            </div>
+            <div className="field grid">
+                <label htmlFor="complementoCfop" className="col-12 mb-2 md:col-3 md:mb-0">
+                    Complemento CFOP:
+                </label>
+                <div className="col-12 md:col-9">
+                    <InputText id="complementoCfop" type="text" className="w-full" />
+                </div>
+            </div>
+            <div className="field grid">
+                <label htmlFor="aliquota" className="col-12 mb-2 md:col-3 md:mb-0">
+                    Aliquota (%):
+                </label>
+                <div className="col-12 md:col-5">
+                    <InputText id="aliquota" type="text" className="w-full" />
+                </div>
+            </div>
+            <div className="field grid">
+                <label htmlFor="valorOperacao" className="col-12 mb-2 md:col-3 md:mb-0">
+                    Valor da Operação:
+                </label>
+                <div className="col-12 md:col-5">
+                    <InputText id="valorOperacao" type="text" className="w-full" />
+                </div>
+            </div>
+            <div className="field grid">
+                <label htmlFor="baseCalculo" className="col-12 mb-2 md:col-3 md:mb-0">
+                    Base de Cálculo:
+                </label>
+                <div className="col-12 md:col-5">
+                    <InputText id="baseCalculo" type="text" className="w-full" />
+                </div>
+            </div>
+            <div className="field grid">
+                <label htmlFor="icms" className="col-12 mb-2 md:col-3 md:mb-0">
+                    ICMS:
+                </label>
+                <div className="col-12 md:col-5">
+                    <InputText id="icms" type="text" className="w-full" />
+                </div>
+            </div>
       </InfosisFieldset>
       <br />
       <InfosisFieldset
         legend="Produtos"
       >
-        <InfosisDataTable
+        {/* <InfosisDataTable
         value={dados}
         >
           <Column field="code" header="Código"></Column>
           <Column field="name" header="Nome"></Column>
           <Column field="category" header="Categoria"></Column>
           <Column field="quantity" header="Quantidade"></Column>
-        </InfosisDataTable>
+        </InfosisDataTable> */}
       </InfosisFieldset>
     </div>
   );

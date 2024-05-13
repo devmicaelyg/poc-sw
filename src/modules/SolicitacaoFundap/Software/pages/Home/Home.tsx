@@ -11,10 +11,12 @@ import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/Info
 import ModalTipoA from '../../../components/ModalTipoA/ModalTipoA';
 import Formulario from './Formulario';
 import InfosisValidationModal, { ValidationError } from '../../../components/InfosisValidationModal/InfosisValidationModal';
+import OperacaoDaSolicitacao from '../../../components/OperacaoDaSolicitacao/OperacaoDaSolicitacao';
 
 export default function Home() {
   const [modalAVisible, setmodalAVisible] = useState<boolean>(false);
   const [modalBVisible, setmodalBVisible] = useState<boolean>(false);
+  const [modalCVisible, setmodalCVisible] = useState<boolean>(false);
 
   const navbarItems = [
     {
@@ -73,7 +75,7 @@ export default function Home() {
       },
     },
   ];
-  
+
   const ValidationErrors: ValidationError[] = [
     {
       id: "1",
@@ -131,6 +133,12 @@ export default function Home() {
                 onClick={() => setmodalBVisible(true)}
                 className='w-3'
               />
+              <Button
+                label="Abrir Modal Tipo C"
+                icon="pi pi-external-link"
+                onClick={() => setmodalCVisible(true)}
+                className='w-3'
+              />
             </div>
             <ModalTipoA
               header="Modal Tipo A"
@@ -150,6 +158,13 @@ export default function Home() {
               validationErrors={ValidationErrors}
             >
             </InfosisValidationModal>
+            <OperacaoDaSolicitacao
+              header="Entradas do Estado - Operaçao Fundap"
+              visible={modalCVisible}
+              onSave={() => setmodalCVisible(false)}
+              onClose={() => setmodalCVisible(false)}
+              onHide={() => setmodalCVisible(false)}
+            />
             <InfosisPanel
               title={"Solicitação de Financiamento"}
               toolbarItems={toolbarItems}
@@ -160,6 +175,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </React.Fragment>
+    </React.Fragment >
   );
 }
