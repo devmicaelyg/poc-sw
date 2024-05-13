@@ -1,8 +1,6 @@
 import './styles.css';
 
 import { AutoComplete, AutoCompleteChangeEvent, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
-import { Dropdown, DropdownChangeEvent } from 'primereact/dropdown';
-import { FloatLabel } from 'primereact/floatlabel';
 import { InputText } from 'primereact/inputtext';
 import { useState } from 'react';
 
@@ -44,16 +42,9 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = (props) => {
                     CFOP:
                 </label>
                 <div className="col-12 md:col-5">
-                    {/* <InputText id="cfop" type="text" className="w-full" /> */}
                     <AutoComplete
                     value={selectedCity} suggestions={items} completeMethod={search} onChange={(e: AutoCompleteChangeEvent) => setValue(e.value)} dropdown className="operacao-solicitacao"
-                    invalid={true}
                     />
-                    {/* <FloatLabel className="w-full md:w-14rem">
-                        <Dropdown inputId="dd-city" value={selectedCity} onChange={(e: DropdownChangeEvent) => setSelectedCity(e.value)} options={cities} optionLabel="name" className="w-full" />
-                        <label htmlFor="dd-city">Select a City</label>
-                    </FloatLabel> */}
-                    <small>Este campo é obrigatório</small>
                 </div>
             </div>
             <div className="field grid">

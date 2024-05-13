@@ -15,7 +15,7 @@ $colors: (
 
 //reused color variables
 $shade000: #ffffff !default; //surface
-$shade100: #f9fafb !default; //header background
+$shade100: $primaryDarkColor !default; //header background
 $shade200: #f3f4f6 !default; //hover background
 $shade300: #e5e7eb !default; //border, divider
 $shade400: #d1d5db !default; //input border
@@ -360,7 +360,7 @@ $inputSwitchHandleOnBg: $shade000 !default;
 $panelHeaderBorderColor: $shade300 !default;
 $panelHeaderBorder: 1px solid $shade300 !default;
 $panelHeaderBg: $shade100 !default;
-$panelHeaderTextColor: $shade800 !default;
+$panelHeaderTextColor: $shade000 !default;
 $panelHeaderFontWeight: 700 !default;
 $panelHeaderPadding: 1.25rem !default;
 $panelToggleableHeaderPadding: 0.75rem 1.25rem !default;

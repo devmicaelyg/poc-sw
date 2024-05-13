@@ -1,3 +1,9 @@
+/* Estilos base do painel */
+.infosis-panel {
+  padding-bottom: 5px;
+}
+
+/* Estilos do painel quando está em modo tela cheia */
 .infosis-panel.fullscreen {
   position: fixed;
   top: 0;
@@ -10,39 +16,33 @@
   height: 100vh;
 }
 
+/* Estilos do cabeçalho dentro do painel */
 .infosis-panel .p-panel-header {
-  background-color: #2897ca;
-  color: white;
   border-radius: 10px 10px 0 0;
 }
 
+/* Estilos do cabeçalho dentro do painel quando está em modo tela cheia */
+.infosis-panel.fullscreen .p-panel-header {
+  border-radius: sem definição;
+}
 
+/* Estilos dos ícones dentro do cabeçalho do painel */
 .infosis-panel .p-panel-header-icon {
   color: black;
   background-color: white;
 }
 
+/* Estilos do conteúdo dentro do painel */
 .infosis-panel .p-panel-content {
-  /* border: 1px solid #c2c6cc; */
   border-radius: 0 0 10px 10px;
-  background-color: #f8f9fa;
-  margin-bottom: 10px;
 }
 
+/* Estilos do conteúdo dentro do painel quando está em modo tela cheia */
 .infosis-panel.fullscreen .p-panel-content {
   height: 100vh;
 }
 
-.fullscreen .infosis-panel.p-panel-header {
-  background-color: #2897ca;
-  color: white;
-  border-radius: unset;
-}
-
-.fullscreen .infosis-panel.p-panel-content {
-  height: 100vh;
-}
-
+/* Remove a animação de transição quando expande o conteúdo dentro do painel */
 .infosis-panel .p-toggleable-content {
   transition: none !important;
 }

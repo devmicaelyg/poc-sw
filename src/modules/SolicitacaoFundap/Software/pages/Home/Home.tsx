@@ -172,6 +172,13 @@ export default function Home() {
               <Formulario />
               {/* <Formulario2 /> */}
             </InfosisPanel>
+            <InfosisPanel
+              title={"Solicitação de Financiamento"}
+              toolbarItems={toolbarItems}
+            >
+              <Formulario />
+              {/* <Formulario2 /> */}
+            </InfosisPanel>
           </div>
         </div>
       </div>
