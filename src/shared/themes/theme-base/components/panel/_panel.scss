@@ -4,8 +4,8 @@
         padding: $panelHeaderPadding;
         background: $panelHeaderBg;
         color: $panelHeaderTextColor;
-        border-top-right-radius: $borderRadius;
-        border-top-left-radius: $borderRadius;
+        border-top-right-radius: $panelBorderTopRightRadius;
+        border-top-left-radius: $panelBorderTopLeftRadius;
 
         .p-panel-title {
             font-weight: $panelHeaderFontWeight;
@@ -13,6 +13,8 @@
 
         .p-panel-header-icon {
             @include action-icon();
+            color: $panelHeaderButtonIconTextColor;
+            background-color: $panelHeaderButtonIconBg;
         }
     }
 
@@ -20,6 +22,7 @@
         .p-panel-header {
             padding: $panelToggleableHeaderPadding;
         }
+        margin-bottom: $panelToggleableMarginBottom;
     }
 
     .p-panel-content {
@@ -27,8 +30,8 @@
         border: $panelContentBorder;
         background: $panelContentBg;
         color: $panelContentTextColor;
-        border-bottom-right-radius: $borderRadius;
-        border-bottom-left-radius: $borderRadius;
+        border-bottom-right-radius: $panelBorderBottomRightRadius;
+        border-bottom-left-radius: $panelBorderBottomLeftRadius;
         border-top: 0 none;
     }
 

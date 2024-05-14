@@ -124,7 +124,7 @@ $passwordMediumBg: #ff9f42 !default;
 $passwordStrongBg: #29c76f !default;
 
 //button
-$buttonPadding: 0.75rem 1.25rem !default;
+$buttonPadding: 0.6rem 1.25rem !default;
 $buttonIconOnlyWidth: 3rem !default;
 $buttonIconOnlyPadding: 0.75rem 0 !default;
 $buttonBg: $primaryColor !default;
@@ -357,6 +357,11 @@ $inputSwitchSliderOnHoverBg: $primaryDarkColor !default;
 $inputSwitchHandleOnBg: $shade000 !default;
 
 //panel
+$panelBorderTopRightRadius: 0.625rem !default;
+$panelBorderTopLeftRadius: 0.625rem !default;
+$panelBorderBottomRightRadius: 0.625rem !default;
+$panelBorderBottomLeftRadius: 0.625rem !default;
+
 $panelHeaderBorderColor: $shade300 !default;
 $panelHeaderBorder: 1px solid $shade300 !default;
 $panelHeaderBg: $shade100 !default;
@@ -364,7 +369,9 @@ $panelHeaderTextColor: $shade000 !default;
 $panelHeaderFontWeight: 700 !default;
 $panelHeaderPadding: 1.25rem !default;
 $panelToggleableHeaderPadding: 0.75rem 1.25rem !default;
-
+$panelToggleableMarginBottom: 0.5rem !default;
+$panelHeaderButtonIconBg: $shade000 !default;
+$panelHeaderButtonIconTextColor: #000 !default;
 $panelHeaderHoverBg: $shade200 !default;
 $panelHeaderHoverBorderColor: $shade300 !default;
 $panelHeaderTextHoverColor: $shade800 !default;
@@ -380,6 +387,16 @@ $panelFooterBorder: 1px solid $shade300 !default;
 $panelFooterBg: $shade000 !default;
 $panelFooterTextColor: $shade700 !default;
 $panelFooterPadding: 0.75rem 1.25rem !default;
+
+//fieldset
+$fieldsetBorder: 1px solid $shade300 !default;
+$fieldsetBorderRadius: 0.625rem !default;
+$fieldsetContentPadding: 0.5rem !default;
+$fieldsetLegendPadding: 0 0.75rem !default;
+$fieldsetLegendBorder: unset !default;
+$fieldsetLegendColor: $shade700 !default;
+$fieldsetLegendBg: $panelContentBg;
+$fieldsetLegendFontWeight: normal !default;
 
 //accordion
 $accordionSpacing: 4px !default;
@@ -617,18 +634,30 @@ $errorMessageIconColor: #ff5757 !default;
 //overlays
 $overlayContentBorder: 0 none !default;
 $overlayContentBg: $panelContentBg !default;
-$overlayContainerShadow: 0 1px 3px rgba(0, 0, 0, 0.3) !default;
+$overlayContainerShadow: none !default; //0 1px 3px rgba(0, 0, 0, 0.3)
 
 //dialog
+$dialogBorderRadius: 1.875rem !default;
+$dialogBorder: 1px solid $shade400 !default;
+$dialogMaxWidth: 48rem !default;
+
 $dialogHeaderBg: $shade000 !default;
-$dialogHeaderBorder: 0 none !default;
+$dialogHeaderBorder: 1px solid $shade400 !default;
+$dialogHeaderBorderRadius: 1.875rem 1.875rem 0 0 !default;
+$dialogHeaderBorderTop: 1px solid $shade400 !default;
+$dialogHeaderBorderLeft: 1px solid $shade400 !default;
+$dialogHeaderBorderRight: 1px solid $shade400 !default;
 $dialogHeaderTextColor: $shade800 !default;
 $dialogHeaderFontWeight: 700 !default;
 $dialogHeaderFontSize: 1.25rem !default;
-$dialogHeaderPadding: 1.5rem !default;
-$dialogContentPadding: 0 1.5rem 2rem 1.5rem !default;
-$dialogFooterBorder: 0 none !default;
-$dialogFooterPadding: 0 1.5rem 1.5rem 1.5rem !default;
+$dialogHeaderPadding: 1rem !default;
+$dialogContentPadding: 1.25rem 1.75rem 1.25rem 1.75rem !default;
+$dialogContentBorder: 1px solid $shade400 !default;
+$dialogFooterBorder: 1px solid $shade400 !default;
+$dialogFooterPadding: 1rem !default;
+$dialogFooterTextAlign: right !default;
+$dialogFooterBorderBottomLeftRadius: 1.875rem !default;
+$dialogFooterBorderBottomRightRadius: 1.875rem !default;
 
 //confirmpopup
 $confirmPopupContentPadding: $panelContentPadding !default;

@@ -1,5 +1,5 @@
 .p-menubar-root-list {
-    gap: 10px;
+    gap: 0.625rem;
     color: white;
 }
 
@@ -21,6 +21,6 @@
 
 .p-menuitem-link {
     background-color: #49aedb;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     color: white;
 } */

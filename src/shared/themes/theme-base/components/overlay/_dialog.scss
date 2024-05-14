@@ -1,15 +1,16 @@
 .p-dialog {
-    border-radius: $borderRadius;
+    border-radius: $dialogBorderRadius;
     box-shadow: $overlayContainerShadow;
     border: $overlayContentBorder;
+    border: $dialogBorder;
+    max-width: $dialogMaxWidth;
 
     .p-dialog-header {
         border-bottom: $dialogHeaderBorder;
         background: $dialogHeaderBg;
         color: $dialogHeaderTextColor;
         padding: $dialogHeaderPadding;
-        border-top-right-radius: $borderRadius;
-        border-top-left-radius: $borderRadius;
+        border-radius: $dialogHeaderBorderRadius;
 
         .p-dialog-title {
             font-weight: $dialogHeaderFontWeight;
@@ -19,10 +20,10 @@
         .p-dialog-header-icon {
             @include action-icon();
             margin-right: $inlineSpacing;
-            
+
             &:last-child {
                 margin-right: 0;
-            }            
+            }
         }
     }
 
@@ -42,9 +43,9 @@
         background: $overlayContentBg;
         color: $panelFooterTextColor;
         padding: $dialogFooterPadding;
-        text-align: right;
-        border-bottom-right-radius: $borderRadius;
-        border-bottom-left-radius: $borderRadius;
+        text-align: $dialogFooterTextAlign;
+        border-bottom-left-radius: $dialogFooterBorderBottomLeftRadius;
+        border-bottom-right-radius: $dialogFooterBorderBottomRightRadius;
 
         button {
             margin: 0 $inlineSpacing 0 0;
@@ -53,7 +54,8 @@
     }
 
     &.p-dialog-maximized {
-        .p-dialog-header, .p-dialog-content:last-of-type {
+        .p-dialog-header,
+        .p-dialog-content:last-of-type {
             border-radius: 0;
         }
     }
@@ -62,7 +64,7 @@
     &.p-confirm-dialog {
         .p-confirm-dialog-icon {
             font-size: $primeIconFontSize * 2;
-            
+
             &.p-icon {
                 width: $primeIconFontSize * 2;
                 height: $primeIconFontSize * 2;

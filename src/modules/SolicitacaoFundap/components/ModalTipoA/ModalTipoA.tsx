@@ -16,14 +16,12 @@ const ModalTipoA: React.FC<ModalTipoAProps> = ({ onClose, onSave, className, ...
       <Button
         label="Fechar"
         onClick={onClose}
-        className='infosis-modal-a-btn-fechar'
         severity="secondary"
         outlined
       />
       <Button
         label="Salvar"
         onClick={onSave}
-        className='infosis-modal-a-btn-salvar'
         severity="success"
       />
     </div>

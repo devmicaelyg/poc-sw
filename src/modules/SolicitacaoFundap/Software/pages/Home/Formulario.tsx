@@ -1,11 +1,7 @@
-import InfosisInput from "../../../../../shared/components/InfosisInput/InfosisInput";
-import InfosisFieldset from "../../../../../shared/components/InfosisFieldset/InfosisFieldset";
-import InfosisDataTable from "../../../../../shared/components/InfosisDataTable/InfosisDataTable";
-import { Column } from "primereact/column";
-import { InputText } from "primereact/inputtext";
-import { useState } from "react";
-import { AutoComplete, AutoCompleteChangeEvent, AutoCompleteCompleteEvent } from "primereact/autocomplete";
-
+import { AutoComplete, AutoCompleteChangeEvent, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
+import { Fieldset } from 'primereact/fieldset';
+import { InputText } from 'primereact/inputtext';
+import { useState } from 'react';
 
 interface Dado {
   id: string;
@@ -63,8 +59,9 @@ export default function InfosisFormTest() {
     ];
 
   return (
-    <div className="mb-3 col-12 grid">
-      <InfosisFieldset legend="Identificação da solicitação">
+    <div className="mb-3 col-12 flex flex-column">
+      <Fieldset 
+        className="col-12" legend="Identificação da solicitação">
         <div className="field grid">
           <label htmlFor="cfop" className="col-12 mb-2 md:col-3 md:mb-0">
             CFOP:
@@ -115,10 +112,11 @@ export default function InfosisFormTest() {
             <InputText id="icms" type="text" className="w-full" />
           </div>
         </div>
-      </InfosisFieldset>
+      </Fieldset>
       <br />
-      <InfosisFieldset
+      <Fieldset
         legend="Produtos"
+        className="col-12"
       >
         {/* <InfosisDataTable
         value={dados}
@@ -128,7 +126,7 @@ export default function InfosisFormTest() {
           <Column field="category" header="Categoria"></Column>
           <Column field="quantity" header="Quantidade"></Column>
         </InfosisDataTable> */}
-      </InfosisFieldset>
+      </Fieldset>
     </div>
   );
 }

@@ -1,15 +1,15 @@
 .p-fieldset {
-    border: $panelContentBorder;
+    border: $fieldsetBorder;
     background: $panelContentBg;
     color: $panelContentTextColor;
-    border-radius: $borderRadius;
+    border-radius: $fieldsetBorderRadius;
 
     .p-fieldset-legend {
-        padding: $panelHeaderPadding;
-        border: $panelHeaderBorder;
-        color: $panelHeaderTextColor;
-        background: $panelHeaderBg;
-        font-weight: $panelHeaderFontWeight;
+        padding: $fieldsetLegendPadding;
+        border: $fieldsetLegendBorder;
+        color: $fieldsetLegendColor;
+        background: $fieldsetLegendBg;
+        font-weight: $fieldsetLegendFontWeight;
         border-radius: $borderRadius;
     }
 
@@ -42,6 +42,6 @@
     }
 
     .p-fieldset-content {
-        padding: $panelContentPadding;
+        padding: $fieldsetContentPadding;
     }
 }

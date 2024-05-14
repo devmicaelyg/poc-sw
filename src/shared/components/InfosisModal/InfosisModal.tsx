@@ -1,6 +1,5 @@
-import React, { ReactNode } from 'react';
 import { Dialog, DialogProps } from 'primereact/dialog';
-import './styles.css';
+import React, { ReactNode } from 'react';
 
 export interface InfosisModalProps extends DialogProps { }
 

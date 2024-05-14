@@ -2288,7 +2288,7 @@
     color: #ffffff;
     background: #49aedb;
     border: 1px solid #49aedb;
-    padding: 0.75rem 1.25rem;
+    padding: 0.6rem 1.25rem;
     font-size: 1rem;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     border-radius: 6px;
@@ -2404,14 +2404,14 @@
   }
   .p-button.p-button-sm {
     font-size: 0.875rem;
-    padding: 0.65625rem 1.09375rem;
+    padding: 0.525rem 1.09375rem;
   }
   .p-button.p-button-sm .p-button-icon {
     font-size: 0.875rem;
   }
   .p-button.p-button-lg {
     font-size: 1.25rem;
-    padding: 0.9375rem 1.5625rem;
+    padding: 0.75rem 1.5625rem;
   }
   .p-button.p-button-lg .p-button-icon {
     font-size: 1.25rem;
@@ -2867,14 +2867,14 @@
   }
   .p-splitbutton.p-button-sm > .p-button {
     font-size: 0.875rem;
-    padding: 0.65625rem 1.09375rem;
+    padding: 0.525rem 1.09375rem;
   }
   .p-splitbutton.p-button-sm > .p-button .p-button-icon {
     font-size: 0.875rem;
   }
   .p-splitbutton.p-button-lg > .p-button {
     font-size: 1.25rem;
-    padding: 0.9375rem 1.5625rem;
+    padding: 0.75rem 1.5625rem;
   }
   .p-splitbutton.p-button-lg > .p-button.p-button-icon-only {
     width: auto;
@@ -4488,14 +4488,14 @@
     border: 1px solid #e5e7eb;
     background: #ffffff;
     color: #4b5563;
-    border-radius: 6px;
+    border-radius: 0.625rem;
   }
   .p-fieldset .p-fieldset-legend {
-    padding: 1.25rem;
-    border: 1px solid #e5e7eb;
-    color: #ffffff;
-    background: #2897ca;
-    font-weight: 700;
+    padding: 0 0.75rem;
+    border: unset;
+    color: #4b5563;
+    background: #ffffff;
+    font-weight: normal;
     border-radius: 6px;
   }
   .p-fieldset.p-fieldset-toggleable .p-fieldset-legend {
@@ -4522,7 +4522,7 @@
     color: #374151;
   }
   .p-fieldset .p-fieldset-content {
-    padding: 1.25rem;
+    padding: 0.5rem;
   }
   .p-divider .p-divider-content {
     background-color: #ffffff;
@@ -4552,8 +4552,8 @@
     padding: 1.25rem;
     background: #2897ca;
     color: #ffffff;
-    border-top-right-radius: 6px;
-    border-top-left-radius: 6px;
+    border-top-right-radius: 0.625rem;
+    border-top-left-radius: 0.625rem;
   }
   .p-panel .p-panel-header .p-panel-title {
     font-weight: 700;
@@ -4566,6 +4566,8 @@
     background: transparent;
     border-radius: 50%;
     transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    color: #000;
+    background-color: #ffffff;
   }
   .p-panel .p-panel-header .p-panel-header-icon:enabled:hover {
     color: #374151;
@@ -4577,6 +4579,9 @@
     outline-offset: 0;
     box-shadow: 0 0 0 0.2rem #d2efff;
   }
+  .p-panel.p-panel-toggleable {
+    margin-bottom: 0.5rem;
+  }
   .p-panel.p-panel-toggleable .p-panel-header {
     padding: 0.75rem 1.25rem;
   }
@@ -4585,8 +4590,8 @@
     border: 1px solid #e5e7eb;
     background: #ffffff;
     color: #4b5563;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 0.625rem;
+    border-bottom-left-radius: 0.625rem;
     border-top: 0 none;
   }
   .p-panel .p-panel-footer {
@@ -4867,7 +4872,7 @@
     color: #4b5563;
     border: 0 none;
     border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
   }
   .p-confirm-popup .p-confirm-popup-content {
     padding: 1.25rem;
@@ -4910,17 +4915,18 @@
     margin-left: 1rem;
   }
   .p-dialog {
-    border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 1.875rem;
+    box-shadow: none;
     border: 0 none;
+    border: 1px solid #d1d5db;
+    max-width: 48rem;
   }
   .p-dialog .p-dialog-header {
-    border-bottom: 0 none;
+    border-bottom: 1px solid #d1d5db;
     background: #ffffff;
     color: #374151;
-    padding: 1.5rem;
-    border-top-right-radius: 6px;
-    border-top-left-radius: 6px;
+    padding: 1rem;
+    border-radius: 1.875rem 1.875rem 0 0;
   }
   .p-dialog .p-dialog-header .p-dialog-title {
     font-weight: 700;
@@ -4952,26 +4958,27 @@
   .p-dialog .p-dialog-content {
     background: #ffffff;
     color: #4b5563;
-    padding: 0 1.5rem 2rem 1.5rem;
+    padding: 1.25rem 1.75rem 1.25rem 1.75rem;
   }
   .p-dialog .p-dialog-content:last-of-type {
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
   }
   .p-dialog .p-dialog-footer {
-    border-top: 0 none;
+    border-top: 1px solid #d1d5db;
     background: #ffffff;
     color: #4b5563;
-    padding: 0 1.5rem 1.5rem 1.5rem;
+    padding: 1rem;
     text-align: right;
-    border-bottom-right-radius: 6px;
-    border-bottom-left-radius: 6px;
+    border-bottom-left-radius: 1.875rem;
+    border-bottom-right-radius: 1.875rem;
   }
   .p-dialog .p-dialog-footer button {
     margin: 0 0.5rem 0 0;
     width: auto;
   }
-  .p-dialog.p-dialog-maximized .p-dialog-header, .p-dialog.p-dialog-maximized .p-dialog-content:last-of-type {
+  .p-dialog.p-dialog-maximized .p-dialog-header,
+  .p-dialog.p-dialog-maximized .p-dialog-content:last-of-type {
     border-radius: 0;
   }
   .p-dialog.p-confirm-dialog .p-confirm-dialog-icon {
@@ -4989,7 +4996,7 @@
     color: #4b5563;
     border: 0 none;
     border-radius: 6px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
   }
   .p-overlaypanel .p-overlaypanel-content {
     padding: 1.25rem;
@@ -5029,7 +5036,7 @@
     background: #ffffff;
     color: #4b5563;
     border: 0 none;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: none;
   }
   .p-sidebar .p-sidebar-header {
     padding: 1.25rem;

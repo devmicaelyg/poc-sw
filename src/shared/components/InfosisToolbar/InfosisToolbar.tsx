@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.css';
 
 export interface InfosisToolbarItem {
   text: string;
@@ -13,12 +12,15 @@ export interface InfosisToolbarProps {
 
 const InfosisToolbar: React.FC<InfosisToolbarProps> = ({ items }) => {
   return (
-    <div className="infosis-toolbar mb-3 col-12 grid ">
-      <ul className='overflow-x-auto'>
+    <div className="flex flex-column col pb-4 p-2">
+      <ul
+      className='overflow-x-auto p-1 pl-3 pr-3 m-0 gap-3 flex flex-row border-round-md font-medium bg-white border-1 border-300 w-full'>
         {items.map((item, index) => (
-          <li key={index} onClick={item.handler}>
+          <li key={index} onClick={item.handler}
+          className='flex flex-row items-center gap-1 cursor-pointer hover:surface-100 p-2 border-round-md align-items-baseline text-xs'
+          >
             <i className={
-              `${item.icon} `
+              `${item.icon} text-xs`
             }
             ></i>
             {item.text}

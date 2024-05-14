@@ -8,10 +8,10 @@ import InfosisDropdown from '../../../../../shared/components/InfosisDropdown/In
 import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/InfosisNavbar';
 import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
 import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
-import ModalTipoA from '../../../components/ModalTipoA/ModalTipoA';
-import Formulario from './Formulario';
 import InfosisValidationModal, { ValidationError } from '../../../components/InfosisValidationModal/InfosisValidationModal';
+import ModalTipoA from '../../../components/ModalTipoA/ModalTipoA';
 import OperacaoDaSolicitacao from '../../../components/OperacaoDaSolicitacao/OperacaoDaSolicitacao';
+import Formulario from './Formulario';
 
 export default function Home() {
   const [modalAVisible, setmodalAVisible] = useState<boolean>(false);
@@ -98,26 +98,12 @@ export default function Home() {
 
   return (
     <React.Fragment>
-      <div
-        style={{
-          display: "block",
-        }}
-      >
+      <div className='block'>
         <InfosisNavbar items={navbarItems} />
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "row",
-          }}
-        >
+        <div className='flex flex-row'>
           <InfosisSidebar />
           <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              paddingLeft: 15,
-              width: "100%",
-            }}
+            className='flex flex-column w-full p-3'
           >
             <InfosisBreadCrumb />
             <div className='grid col-12 gap-2'>

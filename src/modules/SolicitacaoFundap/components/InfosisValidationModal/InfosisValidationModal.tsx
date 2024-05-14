@@ -2,10 +2,10 @@ import './styles.css';
 
 import { Button } from 'primereact/button';
 import { Column } from 'primereact/column';
+import { Fieldset } from 'primereact/fieldset';
 import React from 'react';
 
 import InfosisDataTable from '../../../../shared/components/InfosisDataTable/InfosisDataTable';
-import InfosisFieldset from '../../../../shared/components/InfosisFieldset/InfosisFieldset';
 import InfosisModal, { InfosisModalProps } from '../../../../shared/components/InfosisModal/InfosisModal';
 
 export interface ValidationError {
@@ -50,12 +50,12 @@ const InfosisValidationModal: React.FC<InfosisValidationModalProps> = ({
     >
       <div className='grid'>
         <div className='col-12'>
-          <InfosisFieldset className='font-bold text-red-600 text-center'>
+          <Fieldset className='font-bold text-red-600 text-center'>
             {errorMessage}
-          </InfosisFieldset>
+          </Fieldset>
         </div>
         <div className='col-12'>
-          <InfosisFieldset legend='Lista de Verificação'>
+          <Fieldset legend='Lista de Verificação'>
             <div className='overflow-auto h-10rem'>
               <InfosisDataTable
                 value={validationErrors}
@@ -74,14 +74,14 @@ const InfosisValidationModal: React.FC<InfosisValidationModalProps> = ({
                 />
               </InfosisDataTable>
             </div>
-          </InfosisFieldset>
+          </Fieldset>
         </div>
         <div className='col-12'>
-          <InfosisFieldset legend='Detalhes'>
+          <Fieldset legend='Detalhes'>
             <div className='overflow-auto h-10rem text-sm'>
               {details}
             </div>
-          </InfosisFieldset>
+          </Fieldset>
         </div>
       </div>
     </InfosisModal>
