@@ -15,7 +15,7 @@ $colors: (
 
 //reused color variables
 $shade000: #ffffff !default; //surface
-$shade100: $primaryDarkColor !default; //header background
+$shade100: #f8f9fa !default; //header background
 $shade200: #f3f4f6 !default; //hover background
 $shade300: #e5e7eb !default; //border, divider
 $shade400: #d1d5db !default; //input border
@@ -364,12 +364,11 @@ $panelBorderBottomLeftRadius: 0.625rem !default;
 
 $panelHeaderBorderColor: $shade300 !default;
 $panelHeaderBorder: 1px solid $shade300 !default;
-$panelHeaderBg: $shade100 !default;
+$panelHeaderBg: $primaryDarkColor !default;
 $panelHeaderTextColor: $shade000 !default;
 $panelHeaderFontWeight: 700 !default;
 $panelHeaderPadding: 1.25rem !default;
 $panelToggleableHeaderPadding: 0.75rem 1.25rem !default;
-$panelToggleableMarginBottom: 0.5rem !default;
 $panelHeaderButtonIconBg: $shade000 !default;
 $panelHeaderButtonIconTextColor: #000 !default;
 $panelHeaderHoverBg: $shade200 !default;
@@ -639,7 +638,6 @@ $overlayContainerShadow: none !default; //0 1px 3px rgba(0, 0, 0, 0.3)
 //dialog
 $dialogBorderRadius: 1.875rem !default;
 $dialogBorder: 1px solid $shade400 !default;
-$dialogMaxWidth: 48rem !default;
 
 $dialogHeaderBg: $shade000 !default;
 $dialogHeaderBorder: 1px solid $shade400 !default;
@@ -650,11 +648,11 @@ $dialogHeaderBorderRight: 1px solid $shade400 !default;
 $dialogHeaderTextColor: $shade800 !default;
 $dialogHeaderFontWeight: 700 !default;
 $dialogHeaderFontSize: 1.25rem !default;
-$dialogHeaderPadding: 1rem !default;
+$dialogHeaderPadding: 1.5rem !default;
 $dialogContentPadding: 1.25rem 1.75rem 1.25rem 1.75rem !default;
 $dialogContentBorder: 1px solid $shade400 !default;
 $dialogFooterBorder: 1px solid $shade400 !default;
-$dialogFooterPadding: 1rem !default;
+$dialogFooterPadding: 1.5rem !default;
 $dialogFooterTextAlign: right !default;
 $dialogFooterBorderBottomLeftRadius: 1.875rem !default;
 $dialogFooterBorderBottomRightRadius: 1.875rem !default;

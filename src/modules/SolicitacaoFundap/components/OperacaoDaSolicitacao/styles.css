@@ -76,3 +76,15 @@
     box-shadow: 0 0 0 0.2rem #c7d2fe;
     border-color: #6366f1;
 } */
+.operacao-solicitacao-2 input {
+    border-right: none;
+}
+
+.operacao-solicitacao-2 button {
+    color: #000;
+    background: white;
+    border-bottom: 1px solid #d1d5db;
+    border-top: 1px solid #d1d5db;
+    border-right: 1px solid #d1d5db;
+    border-left: none;
+}

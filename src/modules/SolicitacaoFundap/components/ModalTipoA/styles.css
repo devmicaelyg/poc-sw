@@ -1,17 +1,7 @@
-/* .infosis-modal-a-btn-fechar {
-    background-color: transparent;
-    color: #64748b;
-    border: 1px solid;
-    height: 40px;
+.infosis-modal-a {
+    max-width: 60rem;
 }
 
-.infosis-modal-a-btn-salvar {
-    color: #ffffff;
-    background: #00b050;
-    border: 1px solid #00b050;
-    height: 40px;
-}
-
-.infosis-modal-a-footer button .p-button-label {
+.infosis-modal-a .p-button-label {
     font-weight: 400;
-} */
+}

@@ -99,35 +99,32 @@ export default function Home() {
   return (
     <React.Fragment>
       <div className='block'>
-        <InfosisNavbar items={navbarItems} />
         <div className='flex flex-row'>
-          <InfosisSidebar />
           <div
             className='flex flex-column w-full p-3'
           >
-            <InfosisBreadCrumb />
-            <div className='grid col-12 gap-2'>
+            <div className='flex flex-column md:flex-row col-12 gap-2'>
               <Button
-                label="Abrir Modal Tipo A"
+                label="Modal A"
                 icon="pi pi-external-link"
                 onClick={() => setmodalAVisible(true)}
-                className='w-3'
+                className='xs:w-full md:w-6 lg:w-2'
               />
               <Button
-                label="Abrir Modal Tipo B"
+                label="Modal B"
                 icon="pi pi-external-link"
                 onClick={() => setmodalBVisible(true)}
-                className='w-3'
+                className='xs:w-full md:w-6 lg:w-2'
               />
               <Button
-                label="Abrir Modal Tipo C"
+                label="Modal C"
                 icon="pi pi-external-link"
                 onClick={() => setmodalCVisible(true)}
-                className='w-3'
+                className='xs:w-full md:w-6 lg:w-2'
               />
             </div>
             <ModalTipoA
-              header="Modal Tipo A"
+              header="Modal A"
               visible={modalAVisible}
               onClose={() => setmodalAVisible(false)}
               onSave={() => setmodalAVisible(false)}
@@ -151,6 +148,7 @@ export default function Home() {
               onClose={() => setmodalCVisible(false)}
               onHide={() => setmodalCVisible(false)}
             />
+            <div className='flex flex-column col-12 gap-1'>
             <InfosisPanel
               title={"Solicitação de Financiamento"}
               toolbarItems={toolbarItems}
@@ -165,6 +163,7 @@ export default function Home() {
               <Formulario />
               {/* <Formulario2 /> */}
             </InfosisPanel>
+            </div>
           </div>
         </div>
       </div>

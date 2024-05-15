@@ -4,6 +4,9 @@ import 'primeicons/primeicons.css';
 import { Button } from 'primereact/button';
 import { Panel, PanelToggleEvent } from 'primereact/panel';
 import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
+import fullscreenIcon from '../../assets/icons/fullscreen.svg';
+import fullscreenExitIcon from '../../assets/icons/fullscreen_exit.svg';
 
 import InfosisToolbar, { InfosisToolbarItem } from '../InfosisToolbar/InfosisToolbar';
 
@@ -37,7 +40,6 @@ export default function InfosisPanel({
   const destroyPanel = () => setDestroyed(true);
 
   useEffect(() => {
-
     if (maximized) {
       setCollapsed(false);
     }
@@ -54,10 +56,14 @@ export default function InfosisPanel({
         <div>{title}</div>
         <div className='flex flex-row gap-1'>
           {showMaximizeButton && (
-            <Button
-              className={buttonBaseClass}
-              icon="pi p-icon pi-expand"
-              onClick={toggleMaximized} />
+              <Button
+                className={buttonBaseClass}
+                icon={maximized ?
+                  (<img className='pi text-900' src={fullscreenExitIcon} />)
+                  :
+                  (<img className='pi text-900' src={fullscreenIcon} />)
+                }
+                onClick={toggleMaximized} />
           )}
           {showRefreshButton && (
             <Button className={buttonBaseClass} icon="pi pi-refresh" onClick={refreshButtonHandler} />
@@ -81,19 +87,23 @@ export default function InfosisPanel({
     setCollapsed(prev => !prev)
   }
 
+  const panelContent = (
+    <Panel
+      collapsed={collapsed}
+      headerTemplate={header}
+      toggleable={showMinimizeButton}
+      onToggle={checkMaximizedState}
+      className={`${className}`}
+    >
+      <InfosisToolbar items={toolbarItems} />
+      {children}
+    </Panel>
+  );
+
   return (
     <React.Fragment>
       {!destroyed && (
-        <Panel
-          collapsed={collapsed}
-          headerTemplate={header}
-          toggleable={showMinimizeButton}
-          onToggle={checkMaximizedState}
-          className={`${className}`}
-        >
-          <InfosisToolbar items={toolbarItems} />
-          {children}
-        </Panel>
+        maximized ? createPortal(panelContent, document.body) : panelContent
       )}
     </React.Fragment>
   );

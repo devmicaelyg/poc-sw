@@ -12,7 +12,7 @@ export interface ModalTipoAProps extends InfosisModalProps {
 
 const ModalTipoA: React.FC<ModalTipoAProps> = ({ onClose, onSave, className, ...props }) => {
   const footer = (
-    <div className='infosis-modal-a-footer'>
+    <div className='flex flex-wrap justify-content-center sm:justify-content-end gap-2'>
       <Button
         label="Fechar"
         onClick={onClose}
@@ -30,7 +30,7 @@ const ModalTipoA: React.FC<ModalTipoAProps> = ({ onClose, onSave, className, ...
   return (
     <InfosisModal
       footer={footer}
-      className={`infosis-modal-a w-8 ${className}`}
+      className={`infosis-modal-a ${className} sm:w-11 md:w-11 lg:w-11 xl:w-12`}
       {...props}
     />
   );

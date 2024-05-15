@@ -1,12 +1,15 @@
 /* Estilos do painel quando está em modo tela cheia */
 .infosis-panel.fullscreen {
-  z-index: 1000;
+  background-color: white;
+  overflow-y: auto;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
+  height: 100%;
+  width: 100%;
+  left: 0px;
+  top: 0px;
+  justify-content: center;
+  align-items: center;
+  z-index: 1101;
 }
 
 /* Estilos do cabeçalho dentro do painel quando está em modo tela cheia */
@@ -14,14 +17,7 @@
   border-radius: unset;
 }
 
-/* Estilos do conteúdo dentro do painel quando está em modo tela cheia */
-.infosis-panel.fullscreen .p-panel-content {
-  height: 100vh;
-}
-
 /* Remove a animação de transição quando expande o conteúdo dentro do painel */
 .infosis-panel .p-toggleable-content {
   transition: none !important;
-  transition-duration: 0s !important;
-  animation-delay: 0s !important;
 }
