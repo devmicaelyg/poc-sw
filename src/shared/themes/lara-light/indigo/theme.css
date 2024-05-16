@@ -4920,12 +4920,12 @@
   .p-dialog .p-dialog-header {
     border-bottom: 1px solid #d1d5db;
     background: #ffffff;
-    color: #374151;
+    color: #4b5563;
     padding: 1.5rem;
     border-radius: 1.875rem 1.875rem 0 0;
   }
   .p-dialog .p-dialog-header .p-dialog-title {
-    font-weight: 700;
+    font-weight: 400;
     font-size: 1.25rem;
   }
   .p-dialog .p-dialog-header .p-dialog-header-icon {

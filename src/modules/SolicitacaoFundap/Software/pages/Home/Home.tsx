@@ -1,15 +1,9 @@
-import './styles.css';
-
 import { Button } from 'primereact/button';
 import React, { useEffect, useState } from 'react';
 
-import InfosisBreadCrumb from '../../../../../shared/components/InfosisBreadCrumb/InfosisBreadCrumb';
 import InfosisDropdown from '../../../../../shared/components/InfosisDropdown/InfosisDropdown';
-import InfosisNavbar from '../../../../../shared/components/InfosisNavbar/InfosisNavbar';
 import InfosisPanel from '../../../../../shared/components/InfosisPanel/InfosisPanel';
-import InfosisSidebar from '../../../../../shared/components/InfosisSidebar/InfosisSidebar';
 import InfosisValidationModal, { ValidationError } from '../../../components/InfosisValidationModal/InfosisValidationModal';
-import ModalTipoA from '../../../components/ModalTipoA/ModalTipoA';
 import OperacaoDaSolicitacao from '../../../components/OperacaoDaSolicitacao/OperacaoDaSolicitacao';
 import Formulario from './Formulario';
 
@@ -123,15 +117,6 @@ export default function Home() {
                 className='xs:w-full md:w-6 lg:w-2'
               />
             </div>
-            <ModalTipoA
-              header="Modal A"
-              visible={modalAVisible}
-              onClose={() => setmodalAVisible(false)}
-              onSave={() => setmodalAVisible(false)}
-              onHide={() => setmodalAVisible(false)}
-            >
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </ModalTipoA>
             <InfosisValidationModal
               header="Modal de Validação"
               visible={modalBVisible}
@@ -142,27 +127,27 @@ export default function Home() {
             >
             </InfosisValidationModal>
             <OperacaoDaSolicitacao
-              header="Entradas do Estado - Operaçao Fundap"
-              visible={modalCVisible}
-              onSave={() => setmodalCVisible(false)}
-              onClose={() => setmodalCVisible(false)}
-              onHide={() => setmodalCVisible(false)}
+            header="Entradas do Estado - Operaçao Fundap"
+            visible={modalCVisible}
+            onSave={() => setmodalCVisible(false)}
+            onClose={() => setmodalCVisible(false)}
+            onHide={() => setmodalCVisible(false)}
             />
             <div className='flex flex-column col-12 gap-1'>
-            <InfosisPanel
-              title={"Solicitação de Financiamento"}
-              toolbarItems={toolbarItems}
-            >
-              <Formulario />
-              {/* <Formulario2 /> */}
-            </InfosisPanel>
-            <InfosisPanel
-              title={"Solicitação de Financiamento"}
-              toolbarItems={toolbarItems}
-            >
-              <Formulario />
-              {/* <Formulario2 /> */}
-            </InfosisPanel>
+              <InfosisPanel
+                title={"Solicitação de Financiamento"}
+                toolbarItems={toolbarItems}
+              >
+                <Formulario />
+                {/* <Formulario2 /> */}
+              </InfosisPanel>
+              <InfosisPanel
+                title={"Solicitação de Financiamento"}
+                toolbarItems={toolbarItems}
+              >
+                <Formulario />
+                {/* <Formulario2 /> */}
+              </InfosisPanel>
             </div>
           </div>
         </div>
