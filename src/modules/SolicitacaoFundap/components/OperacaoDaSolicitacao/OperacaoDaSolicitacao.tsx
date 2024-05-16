@@ -5,99 +5,87 @@ import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { z } from 'zod';
+import { z, ZodSchema } from 'zod';
 
 import InfosisModal, { InfosisModalProps } from '../../../../shared/components/InfosisModal/InfosisModal';
+
 export interface OperacaoDaSolicitacaoProps extends InfosisModalProps {
     onClose: () => void;
-    onSave: (data: any) => void;
+    onSave?: (data: any) => void;
+    cfopOptions: { name: string; code: string }[];
+    schema?: ZodSchema;
+    defaultValues?: FormValues;
 }
 
-const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, onSave, ...props }) => {
-    const [formData, setFormData] = useState<any>({});
-    const [items, setItems] = useState<string[]>([]);
+export interface FormValues {
+    cfop: string
+    complementoCfop: string;
+    aliquota: string;
+    valorOperacao: string;
+    baseCalculo: string;
+    icms: string;
+}
+
+const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, onSave, defaultValues, cfopOptions, schema, ...props }) => {
+    const [cfopItems, setCfopItems] = useState<string[]>([]);
     const [cfopValue, setCfopValue] = useState<string>('');
 
-    const cfopOptions = [
-        { name: 'Operação 1', code: '1' },
-        { name: 'Operação 2', code: '2' },
-        { name: 'Operação 3', code: '3' },
-        { name: 'Operação 4', code: '4' },
-        { name: 'Operação 5', code: '5' },
-    ];
-
     const search = (event: AutoCompleteCompleteEvent) => {
-        let _items = cfopOptions.map(item => item.name.toString());
-        setItems(event.query ? _items.filter(item => item.toLowerCase().startsWith(event.query.toLowerCase())) : _items);
-    }
-
-    const validationSchema = z.object({
-        cfop: z.string().min(1, 'CFOP é obrigatório'),
-        complementoCfop: z.string().min(1, 'Complemento CFOP é obrigatório'),
-        aliquota: z.string().min(1, 'Alíquota é obrigatória'),
-        valorOperacao: z.string().min(1, 'Valor da operação é obrigatório'),
-        baseCalculo: z.string().min(1, 'Base de cálculo é obrigatória'),
-        icms: z.string().min(1, 'ICMS é obrigatório'),
-    });
-
-    type FormValues = z.infer<typeof validationSchema>;
-
-    const defaultValues: FormValues = {
-        cfop: '',
-        complementoCfop: '',
-        aliquota: '',
-        valorOperacao: '',
-        baseCalculo: '',
-        icms: '',
+        let filteredCfopItems = cfopOptions.map(item => item.name.toString());
+        setCfopItems(event.query ? filteredCfopItems.filter(item => item.toLowerCase().startsWith(event.query.toLowerCase())) : filteredCfopItems);
     };
+
+    const defaultSchema = z.object({})
 
     const {
         register,
         reset,
         handleSubmit,
+        watch,
         setValue,
         formState: { errors },
     } = useForm<FormValues>({
         defaultValues,
-        resolver: zodResolver(validationSchema),
+        resolver: zodResolver(schema || defaultSchema),
     });
 
-    const onSubmit = (data: FormValues) => {
-        setFormData(data);
-        setCfopValue('');
-        reset();
-        onSave(data);
+    const onSubmit = async (data: FormValues) => {
+        let save = true;
+
+        if (typeof onSave === 'function') {
+            const result = onSave(data);
+            if (typeof result === "boolean") {
+                save = result;
+            }
+        }
+
+        if (save) {
+            setCfopValue('');
+            reset();
+        }
     };
 
     const getFormErrorMessage = (name: keyof FormValues) => {
-        return errors[name] ? <small
-            className="p-error"
-            id={`${name}-help`}
-        >{errors[name]?.message}</small> : null;
+        return errors[name] ? (
+            <small className="p-error" id={`${name}-help`}>
+                {errors[name]?.message}
+            </small>
+        ) : null;
     };
 
     const footer = (
         <div className='flex flex-wrap justify-content-center sm:justify-content-end gap-2'>
-            <Button
-                label="Fechar"
-                onClick={onClose}
-                severity="secondary"
-                outlined
-            />
-            <Button
-                label="Salvar"
-                onClick={handleSubmit(onSubmit)}
-                severity="success"
-            />
+            <Button label="Fechar" onClick={() => {
+                reset()
+                onClose()
+            }}
+                severity="secondary" outlined />
+            <Button label="Salvar" onClick={handleSubmit(onSubmit)} severity="success" />
         </div>
     );
 
     return (
-        <InfosisModal
-            footer={footer}
-            {...props}
-            className={`sm:w-11 md:w-11 lg:w-11 xl:w-12 ${props.className}`}
-        >
+        <InfosisModal footer={footer} {...props} className={`sm:w-11 md:w-11 lg:w-11 xl:w-12 ${props.className}`}>
             <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
                 <div className="field grid">
                     <label htmlFor="cfop" className="col-12 mb-2 md:col-3 md:mb-0">
@@ -106,15 +94,16 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                     <div className="col-12 md:col-5">
                         <AutoComplete
                             id="cfop"
-                            value={cfopValue}
-                            suggestions={items}
+                            forceSelection
+                            {...register('cfop')}
+                            value={watch('cfop')}
+                            suggestions={cfopItems}
                             completeMethod={search}
                             dropdown
                             placeholder="Selecione o CFOP"
                             className={classNames('operacao-solicitacao w-full p-inputtext-sm', { 'p-invalid': errors.cfop })}
                             onChange={(e: AutoCompleteChangeEvent) => {
-                                setCfopValue(e.value);
-                                setValue('cfop', e.value);
+                                setValue('cfop', (e.value || ''), { shouldValidate: true });
                             }}
                             aria-describedby="cfop-help"
                         />
