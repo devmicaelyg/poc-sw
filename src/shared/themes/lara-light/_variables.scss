@@ -15,7 +15,7 @@ $colors: (
 
 //reused color variables
 $shade000: #ffffff !default; //surface
-$shade100: #f8f9fa !default; //header background
+$shade100: #f9fafb !default; //header background
 $shade200: #f3f4f6 !default; //hover background
 $shade300: #e5e7eb !default; //border, divider
 $shade400: #d1d5db !default; //input border
@@ -124,7 +124,7 @@ $passwordMediumBg: #ff9f42 !default;
 $passwordStrongBg: #29c76f !default;
 
 //button
-$buttonPadding: 0.6rem 1.25rem !default;
+$buttonPadding: 0.75rem 1.25rem !default;
 $buttonIconOnlyWidth: 3rem !default;
 $buttonIconOnlyPadding: 0.75rem 0 !default;
 $buttonBg: $primaryColor !default;
@@ -390,7 +390,6 @@ $panelFooterPadding: 0.75rem 1.25rem !default;
 //fieldset
 $fieldsetBorder: 1px solid $shade300 !default;
 $fieldsetBorderRadius: 0.625rem !default;
-$fieldsetContentPadding: 0.5rem !default;
 $fieldsetLegendPadding: 0 0.75rem !default;
 $fieldsetLegendBorder: unset !default;
 $fieldsetLegendColor: $shade700 !default;
@@ -649,13 +648,11 @@ $dialogHeaderTextColor: $shade700 !default;
 $dialogHeaderFontWeight: 400 !default;
 $dialogHeaderFontSize: 1.25rem !default;
 $dialogHeaderPadding: 1.5rem !default;
-$dialogContentPadding: 1.25rem 1.75rem 1.25rem 1.75rem !default;
+$dialogContentPadding: 1.5rem !default;
 $dialogContentBorder: 1px solid $shade400 !default;
 $dialogFooterBorder: 1px solid $shade400 !default;
 $dialogFooterPadding: 1.5rem !default;
-$dialogFooterTextAlign: right !default;
-$dialogFooterBorderBottomLeftRadius: 1.875rem !default;
-$dialogFooterBorderBottomRightRadius: 1.875rem !default;
+$dialogFooterBorderRadius: 0 0 1.875rem 1.875rem !default;
 
 //confirmpopup
 $confirmPopupContentPadding: $panelContentPadding !default;

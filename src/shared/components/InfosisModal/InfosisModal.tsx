@@ -15,7 +15,7 @@ const InfosisModal: React.FC<InfosisModalProps> = ({
       resizable={false}
       draggable={false}
       {...props}
-      className={`infosis-modal ${className} `}
+      className={`infosis-modal ${className}`}
     />
   );
 }

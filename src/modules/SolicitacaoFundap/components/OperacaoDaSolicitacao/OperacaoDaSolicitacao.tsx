@@ -1,60 +1,80 @@
-import { AutoComplete, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { AutoComplete, AutoCompleteChangeEvent, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import { classNames } from 'primereact/utils';
-import React, { useEffect, useState } from 'react';
-import { Controller, useForm } from 'react-hook-form';
+import React, { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from 'zod';
 
 import InfosisModal, { InfosisModalProps } from '../../../../shared/components/InfosisModal/InfosisModal';
-
-type FormValues = {
-    cfop: string;
-    complementoCfop: string;
-    aliquota: string;
-    valorOperacao: string;
-    baseCalculo: string;
-    icms: string;
-
-};
-
-const defaultValues: FormValues = {
-    cfop: '',
-    complementoCfop: '',
-    aliquota: '',
-    valorOperacao: '',
-    baseCalculo: '',
-    icms: '',
-};
 export interface OperacaoDaSolicitacaoProps extends InfosisModalProps {
     onClose: () => void;
-    onSave: () => void;
+    onSave: (data: any) => void;
 }
 
 const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, onSave, ...props }) => {
-    const [countries, setCountries] = useState<any[]>([]);
-    const [showMessage, setShowMessage] = useState(false);
     const [formData, setFormData] = useState<any>({});
-    const [value, setValue] = useState<string>('');
     const [items, setItems] = useState<string[]>([]);
-    const [checked, setChecked] = useState<boolean>(false);
+    const [cfopValue, setCfopValue] = useState<string>('');
 
-    const [selectedCity, setSelectedCity] = useState(null);
-
-    const cities = [
-        { name: 'New York', code: 'NY' },
-        { name: 'New York', code: 'NY' },
-        { name: 'New York', code: 'NY' },
-        { name: 'Rome', code: 'RM' },
-        { name: 'London', code: 'LDN' },
-        { name: 'Istanbul', code: 'IST' },
-        { name: 'Paris', code: 'PRS' }
+    const cfopOptions = [
+        { name: 'Operação 1', code: '1' },
+        { name: 'Operação 2', code: '2' },
+        { name: 'Operação 3', code: '3' },
+        { name: 'Operação 4', code: '4' },
+        { name: 'Operação 5', code: '5' },
     ];
 
     const search = (event: AutoCompleteCompleteEvent) => {
-        let _items = cities.map(item => item.name.toString()); // Convert the array of numbers to an array of strings
-        //set items to be the ondes that start with the query
+        let _items = cfopOptions.map(item => item.name.toString());
         setItems(event.query ? _items.filter(item => item.toLowerCase().startsWith(event.query.toLowerCase())) : _items);
     }
+
+    const validationSchema = z.object({
+        cfop: z.string().min(1, 'CFOP é obrigatório'),
+        complementoCfop: z.string().min(1, 'Complemento CFOP é obrigatório'),
+        aliquota: z.string().min(1, 'Alíquota é obrigatória'),
+        valorOperacao: z.string().min(1, 'Valor da operação é obrigatório'),
+        baseCalculo: z.string().min(1, 'Base de cálculo é obrigatória'),
+        icms: z.string().min(1, 'ICMS é obrigatório'),
+    });
+
+    type FormValues = z.infer<typeof validationSchema>;
+
+    const defaultValues: FormValues = {
+        cfop: '',
+        complementoCfop: '',
+        aliquota: '',
+        valorOperacao: '',
+        baseCalculo: '',
+        icms: '',
+    };
+
+    const {
+        register,
+        reset,
+        handleSubmit,
+        setValue,
+        formState: { errors },
+    } = useForm<FormValues>({
+        defaultValues,
+        resolver: zodResolver(validationSchema),
+    });
+
+    const onSubmit = (data: FormValues) => {
+        setFormData(data);
+        setCfopValue('');
+        reset();
+        onSave(data);
+    };
+
+    const getFormErrorMessage = (name: keyof FormValues) => {
+        return errors[name] ? <small
+            className="p-error"
+            id={`${name}-help`}
+        >{errors[name]?.message}</small> : null;
+    };
 
     const footer = (
         <div className='flex flex-wrap justify-content-center sm:justify-content-end gap-2'>
@@ -66,26 +86,11 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
             />
             <Button
                 label="Salvar"
-                onClick={onSave}
+                onClick={handleSubmit(onSubmit)}
                 severity="success"
             />
         </div>
     );
-
-    const { control, formState: { errors }, handleSubmit, reset } = useForm<FormValues>({ defaultValues });
-
-    const onSubmit = (data: React.SetStateAction<{}>) => {
-        setFormData(data);
-        setShowMessage(true);
-        reset();
-    };
-
-    const getFormErrorMessage = (name: keyof FormValues) => {
-        return errors[name] ? <small className="p-error">{errors[name]?.message}</small> : null;
-    };
-
-
-    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></div>;
 
     return (
         <InfosisModal
@@ -93,35 +98,26 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
             {...props}
             className={`sm:w-11 md:w-11 lg:w-11 xl:w-12 ${props.className}`}
         >
-            {/* <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
-                <div className="flex justify-content-center flex-column pt-6 px-3">
-                    <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
-                    <h5>Registration Successful!</h5>
-                    <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-                        <b>{formData.cfop}</b>
-                    </p>
-                </div>
-            </Dialog> */}
             <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
                 <div className="field grid">
                     <label htmlFor="cfop" className="col-12 mb-2 md:col-3 md:mb-0">
                         CFOP:
                     </label>
-                    <div className="col-12 md:col-5 flex flex-column">
-                        <Controller name="cfop" control={control} rules={{ required: 'Name is required.' }} render={({ field, fieldState }) => (
-                            // <InputText   autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
-                            <AutoComplete
-                                id={field.name}
-                                {...field}
-                                value={field.value}
-                                suggestions={items}
-                                completeMethod={search}
-                                onChange={(e) => field.onChange(e.value)}
-                                dropdown
-                                placeholder="Selecione o CFOP"
-                                className={"operacao-solicitacao w-full p-inputtext-sm " + classNames({ 'p-invalid': fieldState.invalid })}
-                            />
-                        )} />
+                    <div className="col-12 md:col-5">
+                        <AutoComplete
+                            id="cfop"
+                            value={cfopValue}
+                            suggestions={items}
+                            completeMethod={search}
+                            dropdown
+                            placeholder="Selecione o CFOP"
+                            className={classNames('operacao-solicitacao w-full p-inputtext-sm', { 'p-invalid': errors.cfop })}
+                            onChange={(e: AutoCompleteChangeEvent) => {
+                                setCfopValue(e.value);
+                                setValue('cfop', e.value);
+                            }}
+                            aria-describedby="cfop-help"
+                        />
                         {getFormErrorMessage('cfop')}
                     </div>
                 </div>
@@ -131,7 +127,13 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                     </label>
                     <div className="col-12 md:col-9">
                         <InputText
-                            id="complementoCfop" type="text" className="w-full p-inputtext-sm" />
+                            id="complementoCfop"
+                            type="text"
+                            className={classNames('w-full', { 'p-invalid': errors.complementoCfop })}
+                            {...register('complementoCfop')}
+                            aria-describedby="complementoCfop-help"
+                        />
+                        {getFormErrorMessage('complementoCfop')}
                     </div>
                 </div>
                 <div className="field grid">
@@ -141,7 +143,13 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                     <div className="col-12 md:col-5">
                         <InputText
                             placeholder="Informe a alíquota"
-                            id="aliquota" type="text" className="w-full p-inputtext-sm" />
+                            {...register('aliquota')}
+                            id="aliquota"
+                            type="text"
+                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.aliquota })}
+                            aria-describedby="aliquota-help"
+                        />
+                        {getFormErrorMessage('aliquota')}
                     </div>
                 </div>
                 <div className="field grid">
@@ -151,7 +159,13 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                     <div className="col-12 md:col-5">
                         <InputText
                             placeholder='Informe o valor da operação'
-                            id="valorOperacao" type="text" className="w-full p-inputtext-sm" />
+                            {...register('valorOperacao')}
+                            id="valorOperacao"
+                            type="text"
+                            aria-describedby="valorOperacao-help"
+                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.valorOperacao })}
+                        />
+                        {getFormErrorMessage('valorOperacao')}
                     </div>
                 </div>
                 <div className="field grid">
@@ -161,7 +175,13 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                     <div className="col-12 md:col-5">
                         <InputText
                             placeholder='Informe a base de cálculo para o ICMS'
-                            id="baseCalculo" type="text" className="w-full p-inputtext-sm" />
+                            {...register('baseCalculo')}
+                            id="baseCalculo"
+                            type="text"
+                            aria-describedby="baseCalculo-help"
+                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.baseCalculo })}
+                        />
+                        {getFormErrorMessage('baseCalculo')}
                     </div>
                 </div>
                 <div className="field grid">
@@ -169,11 +189,16 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                         ICMS:
                     </label>
                     <div className="col-12 md:col-5">
-                        <InputText id="icms" type="text" className="w-full p-inputtext-sm" />
+                        <InputText
+                            id="icms"
+                            type="text"
+                            aria-describedby="icms-help"
+                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.icms })}
+                            {...register('icms')}
+                        />
+                        {getFormErrorMessage('icms')}
                     </div>
                 </div>
-
-                <Button type="submit" label="Submit" className="mt-2" />
             </form>
         </InfosisModal>
     );
