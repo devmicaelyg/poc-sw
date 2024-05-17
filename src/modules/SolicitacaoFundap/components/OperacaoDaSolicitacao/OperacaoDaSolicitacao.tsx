@@ -43,7 +43,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
         handleSubmit,
         watch,
         setValue,
-        formState: { errors },
+        formState: { errors, isSubmitted },
     } = useForm<FormValues>({
         defaultValues,
         resolver: zodResolver(schema || defaultSchema),
@@ -94,18 +94,19 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                     <div className="col-12 md:col-5">
                         <AutoComplete
                             id="cfop"
-                            forceSelection
                             {...register('cfop')}
                             value={watch('cfop')}
                             suggestions={cfopItems}
                             completeMethod={search}
+                            forceSelection
                             dropdown
                             placeholder="Selecione o CFOP"
-                            className={classNames('operacao-solicitacao w-full p-inputtext-sm', { 'p-invalid': errors.cfop })}
+                            className='operacao-solicitacao w-full'
                             onChange={(e: AutoCompleteChangeEvent) => {
-                                setValue('cfop', (e.value || ''), { shouldValidate: true });
+                                setValue('cfop', (e.value || ''), { shouldValidate: (isSubmitted && e.value != null) });
                             }}
                             aria-describedby="cfop-help"
+                            invalid={!!errors.cfop}
                         />
                         {getFormErrorMessage('cfop')}
                     </div>
@@ -118,9 +119,10 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                         <InputText
                             id="complementoCfop"
                             type="text"
-                            className={classNames('w-full', { 'p-invalid': errors.complementoCfop })}
+                            className='w-full'
                             {...register('complementoCfop')}
                             aria-describedby="complementoCfop-help"
+                            invalid={!!errors.complementoCfop}
                         />
                         {getFormErrorMessage('complementoCfop')}
                     </div>
@@ -135,7 +137,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             {...register('aliquota')}
                             id="aliquota"
                             type="text"
-                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.aliquota })}
+                            className={classNames('w-full', { 'p-invalid': errors.aliquota })}
                             aria-describedby="aliquota-help"
                         />
                         {getFormErrorMessage('aliquota')}
@@ -152,7 +154,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             id="valorOperacao"
                             type="text"
                             aria-describedby="valorOperacao-help"
-                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.valorOperacao })}
+                            className={classNames('w-full', { 'p-invalid': errors.valorOperacao })}
                         />
                         {getFormErrorMessage('valorOperacao')}
                     </div>
@@ -168,7 +170,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             id="baseCalculo"
                             type="text"
                             aria-describedby="baseCalculo-help"
-                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.baseCalculo })}
+                            className={classNames('w-full', { 'p-invalid': errors.baseCalculo })}
                         />
                         {getFormErrorMessage('baseCalculo')}
                     </div>
@@ -182,7 +184,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             id="icms"
                             type="text"
                             aria-describedby="icms-help"
-                            className={classNames('w-full p-inputtext-sm', { 'p-invalid': errors.icms })}
+                            className={classNames('w-full', { 'p-invalid': errors.icms })}
                             {...register('icms')}
                         />
                         {getFormErrorMessage('icms')}
