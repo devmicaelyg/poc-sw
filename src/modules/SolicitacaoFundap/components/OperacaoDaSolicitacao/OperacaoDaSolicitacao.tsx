@@ -2,7 +2,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { AutoComplete, AutoCompleteChangeEvent, AutoCompleteCompleteEvent } from 'primereact/autocomplete';
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
-import { classNames } from 'primereact/utils';
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z, ZodSchema } from 'zod';
@@ -28,7 +27,6 @@ export interface FormValues {
 
 const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, onSave, defaultValues, cfopOptions, schema, ...props }) => {
     const [cfopItems, setCfopItems] = useState<string[]>([]);
-    const [cfopValue, setCfopValue] = useState<string>('');
 
     const search = (event: AutoCompleteCompleteEvent) => {
         let filteredCfopItems = cfopOptions.map(item => item.name.toString());
@@ -60,7 +58,6 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
         }
 
         if (save) {
-            setCfopValue('');
             reset();
         }
     };
@@ -103,7 +100,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             placeholder="Selecione o CFOP"
                             className='operacao-solicitacao w-full'
                             onChange={(e: AutoCompleteChangeEvent) => {
-                                setValue('cfop', (e.value || ''), { shouldValidate: (isSubmitted && e.value != null) });
+                                setValue('cfop', e.value, { shouldValidate: isSubmitted });
                             }}
                             aria-describedby="cfop-help"
                             invalid={!!errors.cfop}
@@ -137,8 +134,9 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             {...register('aliquota')}
                             id="aliquota"
                             type="text"
-                            className={classNames('w-full', { 'p-invalid': errors.aliquota })}
+                            className="w-full"
                             aria-describedby="aliquota-help"
+                            invalid={!!errors.aliquota}
                         />
                         {getFormErrorMessage('aliquota')}
                     </div>
@@ -154,7 +152,8 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             id="valorOperacao"
                             type="text"
                             aria-describedby="valorOperacao-help"
-                            className={classNames('w-full', { 'p-invalid': errors.valorOperacao })}
+                            className="w-full"
+                            invalid={!!errors.valorOperacao}
                         />
                         {getFormErrorMessage('valorOperacao')}
                     </div>
@@ -170,7 +169,8 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             id="baseCalculo"
                             type="text"
                             aria-describedby="baseCalculo-help"
-                            className={classNames('w-full', { 'p-invalid': errors.baseCalculo })}
+                            className="w-full"
+                            invalid={!!errors.baseCalculo}
                         />
                         {getFormErrorMessage('baseCalculo')}
                     </div>
@@ -184,8 +184,9 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             id="icms"
                             type="text"
                             aria-describedby="icms-help"
-                            className={classNames('w-full', { 'p-invalid': errors.icms })}
+                            className="w-full"
                             {...register('icms')}
+                            invalid={!!errors.icms}
                         />
                         {getFormErrorMessage('icms')}
                     </div>
