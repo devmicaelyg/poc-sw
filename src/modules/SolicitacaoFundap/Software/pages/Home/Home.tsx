@@ -95,7 +95,7 @@ const ValidationErrors: ValidationError[] = [
 const details = "Ao menos um dos campos obrigatórios não foi preenchido. Favor verificar os campos indicados.";
 
 const schema = z.object({
-  cfop: z.string({ invalid_type_error: "CFOP é obrigatório" }).trim().min(1, 'CFOP é obrigatório'),
+  cfop: z.string({invalid_type_error: "CFOP é obrigatório", required_error: "CFOP é obrigatório"}).trim().min(1, 'CFOP é obrigatório'),
   complementoCfop: z.string().trim().min(1, 'Complemento CFOP é obrigatório'),
   aliquota: z.string().trim().min(1, 'Alíquota é obrigatória'),
   valorOperacao: z.string().trim().min(1, 'Valor da operação é obrigatório'),
