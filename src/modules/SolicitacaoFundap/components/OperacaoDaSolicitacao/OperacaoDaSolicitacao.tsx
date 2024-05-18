@@ -102,7 +102,6 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                             onChange={(e: AutoCompleteChangeEvent) => {
                                 setValue('cfop', e.value, { shouldValidate: isSubmitted });
                             }}
-                            aria-describedby="cfop-help"
                             invalid={!!errors.cfop}
                         />
                         {getFormErrorMessage('cfop')}

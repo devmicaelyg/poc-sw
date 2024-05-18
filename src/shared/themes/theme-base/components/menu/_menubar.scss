@@ -1,6 +1,6 @@
 .p-menubar {
 	padding: $horizontalMenuPadding;
-	background: $horizontalMenuBg;
+	background: $primaryDarkColor;
 	color: $horizontalMenuTextColor;
 	border: $horizontalMenuBorder;
 	border-radius: $borderRadius;
@@ -118,7 +118,7 @@
 			display: flex;
 			width: $actionIconWidth;
 			height: $actionIconHeight;
-			color: $horizontalMenuRootMenuitemIconColor;
+			color: $shade000;
 			border-radius: $actionIconBorderRadius;
 			transition: $actionIconTransition;
 

@@ -1,26 +1,34 @@
-/* .p-menubar-root-list {
-    gap: 0.625rem;
+.infosis-navbar {
+    padding: 0.5rem;
+    background: #2897ca;
     color: white;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    position: relative;
+    height: 62px;
+    width: 100%;
 }
 
-.p-dropdown-label{
-    color: white;
+.infosis-navbar .p-dropdown {
+    background: #49aedb;
+    border: none;
+    border-radius: 0.5rem;
+    height: fit-content;
 }
 
-.p-dropdown-trigger-icon{
+.infosis-navbar .p-dropdown-label {
     color: white;
-} */
-
-/* .p-menuitem-text{
-    color: white;
+    font-size: small;
+    padding-right: 0px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
-.p-submenu-icon{
+.infosis-navbar .p-dropdown-trigger-icon {
     color: white;
+    padding: 1px;
 }
-
-.p-menuitem-link {
-    background-color: #49aedb;
-    border-radius: 0.625rem;
-    color: white;
-} */
