@@ -71,7 +71,7 @@ export default function InfosisFormTest() {
                     <AutoComplete value={value} suggestions={items} completeMethod={search}
                         onChange={(e: AutoCompleteChangeEvent) => setValue(e.value)} dropdown
                         placeholder="Selecione o CFOP"
-                        className="operacao-solicitacao w-full p-inputtext-sm" />
+                        className="w-full p-inputtext-sm" />
                 </div>
             </div>
             <div className="field grid">

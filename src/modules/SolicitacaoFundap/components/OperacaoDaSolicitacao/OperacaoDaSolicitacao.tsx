@@ -3,7 +3,7 @@ import { AutoComplete, AutoCompleteChangeEvent, AutoCompleteCompleteEvent } from
 import { Button } from 'primereact/button';
 import { InputText } from 'primereact/inputtext';
 import React, { useState } from 'react';
-import { useForm } from 'react-hook-form';
+import { Controller, useForm } from 'react-hook-form';
 import { z, ZodSchema } from 'zod';
 
 import InfosisModal, { InfosisModalProps } from '../../../../shared/components/InfosisModal/InfosisModal';
@@ -41,6 +41,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
         handleSubmit,
         watch,
         setValue,
+        control,
         formState: { errors, isSubmitted },
     } = useForm<FormValues>({
         defaultValues,
@@ -67,7 +68,9 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
             <small className="p-error" id={`${name}-help`}>
                 {errors[name]?.message}
             </small>
-        ) : null;
+        ) : <span>
+            &nbsp;
+        </span>;
     };
 
     const footer = (
@@ -82,32 +85,35 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
     );
 
     return (
-        <InfosisModal footer={footer} {...props} className={`sm:w-11 md:w-11 lg:w-11 xl:w-12 ${props.className}`}>
+        <InfosisModal footer={footer} {...props} className={`w-11 ${props.className}`}>
             <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
-                <div className="field grid">
+                <div className="field grid pb-2 mb-0">
                     <label htmlFor="cfop" className="col-12 mb-2 md:col-3 md:mb-0">
                         CFOP:
                     </label>
                     <div className="col-12 md:col-5">
-                        <AutoComplete
-                            id="cfop"
-                            {...register('cfop')}
-                            value={watch('cfop')}
-                            suggestions={cfopItems}
-                            completeMethod={search}
-                            forceSelection
-                            dropdown
-                            placeholder="Selecione o CFOP"
-                            className='operacao-solicitacao w-full'
-                            onChange={(e: AutoCompleteChangeEvent) => {
-                                setValue('cfop', e.value, { shouldValidate: isSubmitted });
-                            }}
-                            invalid={!!errors.cfop}
-                        />
+                        <Controller name="cfop" control={control} render={({ field }) => (
+                            <AutoComplete
+                                id="cfop"
+                                dropdownMode="blank"
+                                value={field.value}
+                                suggestions={cfopItems}
+                                completeMethod={search}
+                                forceSelection
+                                dropdown
+                                placeholder="Selecione o CFOP"
+                                className="w-full"
+                                onChange={(e: AutoCompleteChangeEvent) => {
+                                    field.onChange(e.value);
+                                    setValue('cfop', e.value);
+                                }}
+                                invalid={!!errors.cfop}
+                            />
+                        )} />
                         {getFormErrorMessage('cfop')}
                     </div>
                 </div>
-                <div className="field grid">
+                <div className="field grid pb-2 mb-0">
                     <label htmlFor="complementoCfop" className="col-12 mb-2 md:col-3 md:mb-0">
                         Complemento CFOP:
                     </label>
@@ -123,7 +129,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                         {getFormErrorMessage('complementoCfop')}
                     </div>
                 </div>
-                <div className="field grid">
+                <div className="field grid pb-2 mb-0">
                     <label htmlFor="aliquota" className="col-12 mb-2 md:col-3 md:mb-0 ">
                         Aliquota (%):
                     </label>
@@ -140,7 +146,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                         {getFormErrorMessage('aliquota')}
                     </div>
                 </div>
-                <div className="field grid">
+                <div className="field grid pb-2 mb-0">
                     <label htmlFor="valorOperacao" className="col-12 mb-2 md:col-3 md:mb-0">
                         Valor da Operação:
                     </label>
@@ -157,7 +163,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                         {getFormErrorMessage('valorOperacao')}
                     </div>
                 </div>
-                <div className="field grid">
+                <div className="field grid pb-2 mb-0">
                     <label htmlFor="baseCalculo" className="col-12 mb-2 md:col-3 md:mb-0">
                         Base de Cálculo:
                     </label>
@@ -174,7 +180,7 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
                         {getFormErrorMessage('baseCalculo')}
                     </div>
                 </div>
-                <div className="field grid">
+                <div className="field grid pb-2 mb-0">
                     <label htmlFor="icms" className="col-12 mb-2 md:col-3 md:mb-0">
                         ICMS:
                     </label>
