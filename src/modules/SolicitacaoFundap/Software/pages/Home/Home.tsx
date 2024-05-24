@@ -90,9 +90,7 @@ export default function Home() {
         setSidebarVisible={() => setSidebarVisible(!sidebarVisible)}
       />
       <div className="grid h-screen">
-        <div className='col-fixed hidden lg:block' style={{
-          width: '280px',
-        }}>
+        <div className='col-fixed hidden xl:block'>
           <InfosisSidebar
             visible={sidebarVisible}
             onHide={() => setSidebarVisible(false)}

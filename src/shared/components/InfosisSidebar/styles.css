@@ -1,0 +1,20 @@
+.infosis-sidebar-menu {
+
+  .p-menuitem-text {
+    color: #185d7d;
+    font-size: medium;
+  }
+
+  .p-menuitem-content:hover {
+    background-color: #2897ca;
+    border: unset;
+
+    .p-menuitem-text {
+      color: white;
+    }
+  }
+}
+
+.infosis-sidebar-overlay .p-sidebar-content {
+  padding: 0px;
+}

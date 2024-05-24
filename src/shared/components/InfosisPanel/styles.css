@@ -21,3 +21,17 @@
 .infosis-panel .p-toggleable-content {
   transition: none !important;
 }
+
+.infosis-panel .p-panel-header-icon {
+  background-color: white;
+}
+
+.infosis-panel .p-panel-header-icon:hover {
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+  box-shadow: none;
+}
+
+.infosis-panel .p-panel-header-icon:focus {
+  border: 1px rgba(0, 0, 0, 0.3) solid;
+  box-shadow: none;
+}
