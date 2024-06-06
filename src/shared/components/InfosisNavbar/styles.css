@@ -19,6 +19,39 @@
     height: fit-content;
 }
 
+.infosis-navbar .p-calendar .p-inputtext {
+    color: white;
+    background: #49aedb;
+    border: none;
+    border-radius: 0.5rem;
+    height: fit-content;
+    font-size: small;
+    padding-right: 0px;
+    padding-left: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.infosis-navbar .p-calendar {
+    width: 230px;
+
+}
+
+.infosis-navbar .p-datepicker-trigger {
+    color: white;
+    padding: 1px;
+}
+
+.infosis-navbar .p-calendar .p-inputtext::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+}
+
+/* Edge 12 -18 */
+.infosis-navbar .p-calendar .p-inputtext::-ms-input-placeholder {
+    color: white;
+}
+
 .infosis-navbar .p-dropdown-label {
     color: white;
     font-size: small;
@@ -31,4 +64,51 @@
 .infosis-navbar .p-dropdown-trigger-icon {
     color: white;
     padding: 1px;
+}
+
+.infosis-navbar-dropdown {
+    color: white;
+    /* background: #49aedb; */
+    border-radius: 0.5rem;
+    /* height: fit-content; */
+    border: 2px solid white;
+}
+
+.infosis-navbar-dropdown ul li:hover {}
+
+.infosis-navbar-dropdown .p-dropdown-item-label {
+    font-size: small;
+}
+
+.infosis-navbar-dropdown .p-dropdown-item-label:hover {}
+
+.infosis-navbar-dropdown .p-dropdown-item.p-focus {}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* 
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px #2897ca;
+    border-radius: 5px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #9bcde2;
+    border-radius: 5px;
+}
+ */
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px #a8a8a8;
+    border-radius: 5px;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #a8a8a8;
+    border-radius: 5px;
 }

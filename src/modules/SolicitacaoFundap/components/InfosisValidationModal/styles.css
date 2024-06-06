@@ -19,3 +19,7 @@
     color: #4b5563;
     background-color: transparent;
 }
+
+.infosis-validation-modal {
+    max-width: 576px;
+}

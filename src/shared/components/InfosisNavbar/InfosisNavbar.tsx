@@ -10,16 +10,34 @@ import React, { useState } from 'react';
 import InfosisDropdown from '../InfosisDropdown/InfosisDropdown';
 import { Dropdown } from 'primereact/dropdown';
 import { Button } from 'primereact/button';
+import { Calendar } from 'primereact/calendar';
 
 export default function InfosisNavbar(props: { setSidebarVisible: any }) {
-    const [selectedCity, setSelectedCity] = useState(null);
-    
-    const cities = [
-        { name: 'New York', code: 'NY' },
-        { name: 'Rome', code: 'RM' },
-        { name: 'London', code: 'LDN' },
-        { name: 'Istanbul', code: 'IST' },
-        { name: 'Paris', code: 'PRS' }
+    const [empresa, setEmpresa] = useState(null);
+    const [operacao, setOperacao] = useState(null);
+    const [dataContrato, setdataContrato] = useState<null | Date>(null);
+    const [opcaoDoMenu, setOpcaoDoMenu] = useState(null);
+
+    const menuDoUsuario = [
+        { name: 'Perfil', icon: 'pi pi-user' },
+        { name: 'Configurações', icon: 'pi pi-cog' },
+        { name: 'Sair', icon: 'pi pi-power-off' }
+    ];
+
+    const empresas = [
+        { name: 'Bandes', code: 'BNDES' },
+        { name: 'Banco do Brasil', code: 'BB' },
+        { name: 'Caixa Econômica Federal', code: 'CEF' },
+        { name: 'Banco do Nordeste', code: 'BNB' },
+        { name: 'Banco da Amazônia', code: 'BASA' }
+    ];
+
+    const operacoes = [
+        { name: 'Operação 1', code: 'OP1' },
+        { name: 'Operação 2', code: 'OP2' },
+        { name: 'Operação 3', code: 'OP3' },
+        { name: 'Operação 4', code: 'OP4' },
+        { name: 'Operação 5', code: 'OP5' }
     ];
 
     const itemRenderer = (item: { icon: string | undefined; label: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; badge: any; shortcut: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | null | undefined; }) => (
@@ -35,18 +53,25 @@ export default function InfosisNavbar(props: { setSidebarVisible: any }) {
         return (
             <div className='hidden xl:flex xl:flex-inline gap-2 ml-4'>
                 <Dropdown
-                    value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                    placeholder="Select a City"
+                    value={empresa} onChange={(e) => setEmpresa(e.value)} options={empresas} optionLabel="name"
+                    placeholder="Selecione a empresa"
+                    style={{
+                        width: '190px'
+                    }}
+                />
+                <Calendar placeholder="Selecione o mês/ano do contrato"
+                value={dataContrato} onChange={(e) => setdataContrato(e.value || null)} view="month" dateFormat="mm/yy"
+                // showIcon
+                // onShow={() => console.log('show')}
+                // icon={() => <i className="pi pi-clock" />}
                 />
                 <Dropdown
-                value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
-                    placeholder="Selecione o mês/ano do contrato"
-                    className=""
-                />
-                <Dropdown
-                value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
+                    value={operacao} onChange={(e) => setOperacao(e.value)} options={operacoes} optionLabel="name"
                     placeholder="Operações realizadas no mês"
                     className=""
+                    style={{
+                        width: '244px'
+                    }}
                 />
             </div>
         )
@@ -71,10 +96,17 @@ export default function InfosisNavbar(props: { setSidebarVisible: any }) {
                 <div className='flex align-items-center'>
                     <Avatar image="https://primefaces.org/cdn/primereact/images/avatar/amyelsner.png" shape="circle" />
                 </div>
-                <div className='w-full justify-content-end'>
+                <div className='w-full justify-content-end hidden sm:block'>
                     <Dropdown
-                    value={selectedCity} onChange={(e) => setSelectedCity(e.value)} options={cities} optionLabel="name" 
+                        value={opcaoDoMenu} onChange={(e) =>
+                            //prevent default behavior
+                            e.preventDefault()
+                            // setOpcaoDoMenu(e.value)
+                        } options={menuDoUsuario} optionLabel="name"
                         placeholder="Nome do usuário"
+                        style={{
+                            width: '166px'
+                        }}
                         className="input-text-sm bg-transparent"
                     // dropdownIcon="pi pi-caret-down"
                     />

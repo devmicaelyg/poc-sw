@@ -85,7 +85,12 @@ const OperacaoDaSolicitacao: React.FC<OperacaoDaSolicitacaoProps> = ({ onClose, 
     );
 
     return (
-        <InfosisModal footer={footer} {...props} className={`w-11 ${props.className}`}>
+        <InfosisModal footer={footer} {...props} className={`w-11 ${props.className}`}
+        onHide={() => {
+            reset()
+            onClose()
+        }}
+        >
             <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
                 <div className="field grid pb-2 mb-0">
                     <label htmlFor="cfop" className="col-12 mb-2 md:col-3 md:mb-0">

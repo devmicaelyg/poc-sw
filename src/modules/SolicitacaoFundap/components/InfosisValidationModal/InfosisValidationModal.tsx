@@ -47,6 +47,9 @@ const InfosisValidationModal: React.FC<InfosisValidationModalProps> = ({
       footer={footer}
       {...props}
       className={`infosis-validation-modal w-11 ${className}`}
+      style={{
+        maxWidth: '50rem',
+      }}
     >
       <div className='grid'>
         <div className='col-12'>

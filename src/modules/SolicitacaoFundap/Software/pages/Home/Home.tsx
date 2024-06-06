@@ -100,24 +100,33 @@ export default function Home() {
           <div className='flex flex-row'>
             {/* <div className='flex flex-row'> */}
             <div className='flex flex-column w-full'>
-              <div className='flex flex-column md:flex-row col-12 gap-2'>
+              <div className='flex flex-row md:flex-row col-12 gap-2'>
                 <Button
                   label="Modal A"
                   icon="pi pi-external-link"
                   onClick={() => setmodalAVisible(true)}
-                  className='xs:w-full md:w-6 lg:w-2'
+                  // className='xs:w-full md:w-6 lg:w-2'
+                  style={{
+                    width: '150px',
+                  }}
                 />
                 <Button
                   label="Modal B"
                   icon="pi pi-external-link"
                   onClick={() => setmodalBVisible(true)}
-                  className='xs:w-full md:w-6 lg:w-2'
+                  // className='xs:w-full md:w-6 lg:w-2'
+                  style={{
+                    width: '150px',
+                  }}
                 />
                 <Button
                   label="Modal C"
                   icon="pi pi-external-link"
                   onClick={() => setmodalCVisible(true)}
-                  className='xs:w-full md:w-6 lg:w-2'
+                  // className='xs:w-full md:w-6 lg:w-2'
+                  style={{
+                    width: '150px',
+                  }}
                 />
               </div>
               <div className='flex flex-column col-12 gap-1'>
